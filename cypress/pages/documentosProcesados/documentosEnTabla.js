@@ -1,4 +1,4 @@
-class datosTabla {
+class DatosTabla {
     vacio = {
         tr: () => cy.get('[data-test="report-table-no-data-row"]'),
         td: () => cy.get('[data-test="report-table-no-data-cell"]'),
@@ -140,4 +140,4 @@ class datosTabla {
     }
 }
 
-export default new datosTabla();
+export default new DatosTabla();

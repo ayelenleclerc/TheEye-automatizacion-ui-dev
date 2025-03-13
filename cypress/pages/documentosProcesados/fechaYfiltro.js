@@ -1,4 +1,4 @@
-class fechaFiltro{
+class FechaFiltro{
     e= {
         rangoFechas: () => cy.get('[data-test="report-date-range-container"]'),
         fechaInput: () => cy.get('[data-test="report-date-range-input"]'),
@@ -34,4 +34,4 @@ class fechaFiltro{
 }
 }
 
-export default new fechaFiltro();
+export default new FechaFiltro();
