@@ -1,5 +1,6 @@
 import LoginPageTagger from "../pages/login/LoginPageTagger.js";
 import Home from '../pages/home/homeTagger.js'
+import Documento from '../pages/documentosProcesados/documentosEnTabla.js'
  Cypress.Commands.add('login_tagger', () => {
     
     LoginPageTagger.usernameInput("ayelenleclerc@gmail.com");
@@ -56,3 +57,11 @@ Cypress.Commands.add('subirPdf', (archivo) => {
                 .trigger('drop', { dataTransfer });
         });
 })
+
+Cypress.Commands.add('probar_Lote', () => {
+        Documento.contenido.checkboxRow().eq(0).click();
+        Documento.obtenerIdFilaSeleccionada().then((id) => {
+                Documento.contenido.estadoRow().click();
+                cy.url().should('include', `/batch/${id}/document`);
+        });
+});
