@@ -31,7 +31,7 @@ describe('Validación de lotes', () => {
     it('Crear nuevo Lote sin nombre: muestra el error', () => {
         PantallaPrincipal.menuBase.agregarNuevo().click();
         PantallaPrincipal.nuevoLote.tituloNuevoLote().should('have.text',  'Nombre del nuevo lote');
-        PantallaPrincipal.nuevoLote.guardarBtn().should('not.exist');
+        PantallaPrincipal.nuevoLote.guardarBtn().should('not.be.enabled');
         PantallaPrincipal.nuevoLote.input().type('{enter}');
         PantallaPrincipal.nuevoLote.input().should('have.value', '');
         PantallaPrincipal.nuevoLote.cancelarBtn().should('exist');

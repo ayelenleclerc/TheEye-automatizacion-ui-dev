@@ -10,7 +10,8 @@
     "test-config": "cypress run --spec --browser chrome./cypress/e2e/tagger-ui-dev/seccionConfiguracion/*.cy.js",
     "test-login": "cypress run --browser chrome --spec ./cypress/e2e/login/*.cy.js",
     "test-validDoc": "cypress run --browser chrome --spec ./cypress/e2e/tagger-ui-dev/documentosProcesados/validacionElementos/*.cy.js",
-    "test-processDoc": "cypress run --browser chrome --spec ./cypress/e2e/tagger-ui-dev/documentosProcesados/testCases/*.cy.js"
+    "test-processDoc": "cypress run --browser chrome --spec ./cypress/e2e/tagger-ui-dev/documentosProcesados/testCases/*.cy.js",
+     "test-lotes": "cypress run --browser chrome --spec ./cypress/e2e/tagger-ui-dev/lotes/*.cy.js"
     
   },
   "keywords": [],
