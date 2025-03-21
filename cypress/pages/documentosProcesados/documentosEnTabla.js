@@ -33,6 +33,8 @@ class DatosTabla {
             descargar: (id) => cy.get(`[data-test="report-col-cell-download-btn-${id}"]`),
             procesarManual: (id) => cy.get(`[data-test="report-col-cell-manual-review-btn-${id}"]`),
             menu: (id) => cy.get(`[data-test="report-col-cell-actions-menu-btn-${id}"]`),
+            extraerExcel: (id) => cy.get(`[data-test="report-col-cell-xls-import-btn-${id}"]`),
+            
         },
 
         menu: {
@@ -48,13 +50,27 @@ class DatosTabla {
         mensajeToast: () => cy.get('#toast-container > .ng-trigger'),
         clasificar: {
             clasificarTitulo: () => cy.get('[data-test="classify-document-dialog-title"]'),
-            clasificarDocumentoField: () => cy.get('[data-test="classify-document-schema-field"]'),
+            clasificarDocumentoField: () => cy.get('#mat-mdc-form-field-label-16 > mat-label'),
             clasificarDocumentoLabel: () => cy.get('[data-test="classify-document-schema-label"]'),
-            clasificarDocumentoOption: () => cy.get('[data-test="classify-document-schema-option-67a20b6cafbd964ec85ed356"]'),
+            clasificarDocumentoOptionOP: () => cy.get('[data-test="classify-document-schema-option-67dc1d371b5670dfed91fc6c"]'),
             clasificarBtn: ()=> cy.get('[data-test="classify-document-save-button"]'),
 
         },
-  
+        extraer: {
+            esquema: () => cy.get('[data-test="excel-extraction-schema-field"]'),
+            OPOption: () => cy.get('[data-test="excel-extraction-schema-option-67dc1d371b5670dfed91fc6c"]'),
+            eCheqOption: () => cy.get('[data-test="excel-extraction-schema-option-67dc0b821b5670dfed91fc3b"]'),
+            facturaOption: () => cy.get('[data-test="excel-extraction-schema-option-67a20b6cafbd964ec85ed356"]'),
+            cantFilasInput: () => cy.get('[data-test="excel-extraction-data-row-input"]'),
+            extraerBtn: () => cy.get('[data-test="excel-extraction-extract-button"]'),
+        },
+        eCheqInputs: {
+            cuentaDestino: () => cy.get('[data-test="excel-extraction-col-cell-column-input-0"]'),
+            fechaPago: () => cy.get('[data-test="excel-extraction-col-cell-column-input-1"]'),
+            monto: () => cy.get('[data-test="excel-extraction-col-cell-column-input-2"]'),
+            nroCheque: () => cy.get('[data-test="excel-extraction-col-cell-column-input-3"]'),
+          
+        }
     };
         /**
          * @returns {Cypress.Chainable<string>} 
@@ -138,6 +154,9 @@ class DatosTabla {
         this.contenido.acciones.procesarManual(id).click();
        })
     }
+
+
+
 }
 
 export default new DatosTabla();

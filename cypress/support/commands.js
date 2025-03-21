@@ -1,6 +1,7 @@
 import LoginPageTagger from "../pages/login/LoginPageTagger.js";
 import Home from '../pages/home/homeTagger.js'
-import Documento from '../pages/documentosProcesados/documentosEnTabla.js'
+import Documento from '../pages/documentosProcesados/documentosEnTabla.js';
+import 'cypress-file-upload';
  Cypress.Commands.add('login_tagger', () => {
     
     LoginPageTagger.usernameInput("ayelenleclerc@gmail.com");
@@ -45,6 +46,21 @@ Cypress.Commands.add('ingresar_Configuracion', () => {
         Home.e.configuracion().click();
        
 })
+
+Cypress.Commands.add('ingresar_Esquemas', () => {
+        cy.login_tagger_Session();
+        cy.visit('/home');
+        Home.e.esquemas().click();
+         cy.url().should('include', '/schemas');
+       
+})
+
+Cypress.Commands.add('ingresar_Metricas', () => {
+        cy.login_tagger_Session();
+        cy.visit('/home');
+        Home.e.metricas().click();
+        cy.url().should('include', '/metrics');
+})
 Cypress.Commands.add('subirPdf', (archivo) => {
        cy.fixture(archivo, 'base64').then(fileContent => {
             const file = new File([Cypress.Blob.base64StringToBlob(fileContent)], archivo, { type: 'application/pdf' });
@@ -61,7 +77,11 @@ Cypress.Commands.add('subirPdf', (archivo) => {
 Cypress.Commands.add('probar_Lote', () => {
         Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
-                Documento.contenido.estadoRow().click();
+                Documento.contenido.estadoRow().eq(0).click();
                 cy.url().should('include', `/batch/${id}/document`);
         });
+});
+
+Cypress.Commands.add('subirArchivo', (selector, nombreArchivo, tipoArchivo = '') => {
+    cy.get(selector).attachFile({ filePath: nombreArchivo, mimeType: tipoArchivo });
 });

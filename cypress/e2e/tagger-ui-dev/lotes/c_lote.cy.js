@@ -25,7 +25,7 @@ describe('Acciones básicas de Nuevo Lote', () => {
     it('Ingresar al nuevo Lote', () => {
         Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.estadoRow().click();
+            Documento.contenido.estadoRow().eq(0).click();
             cy.url().should('include', `/batch/${id}/document`);
             cy.log('La URL está perfectamente redirigida')
         })
@@ -86,5 +86,14 @@ describe('Acciones básicas de Nuevo Lote', () => {
             Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
         })
     })
-    
+
+    it('Borrar Lote', () => {
+        cy.ingresar_Lotes()
+         Documento.contenido.checkboxRow().eq(0).click();
+       Documento.obtenerIdFilaSeleccionada().then((id) => { 
+           Tabla.e.borrarBtn(id).click();
+           Tabla.modalBorrar.siBtn().click();
+            Documento.contenido.mensajeToast().should('be.visible').and('contain','Lote borrado exitosamente');
+        })
+    })
 });

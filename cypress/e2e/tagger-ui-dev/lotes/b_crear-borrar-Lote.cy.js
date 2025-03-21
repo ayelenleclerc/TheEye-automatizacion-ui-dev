@@ -27,12 +27,12 @@ describe('Acciones básicas de Nuevo Lote', () => {
             Documento.contenido.idCopyBtn(id).should('exist');
             Documento.contenido.fechaCreacionRow().should('exist');
             Documento.validarFechaFilaSeleccionada();
-            Tabla.e.carpeta().should('have.text', ` ${nombreLote} `);
-            Tabla.e.cantItems().should('have.text', ' 0 ');
+            Tabla.e.carpeta().eq(0).should('have.text', ` ${nombreLote} `);
+            Tabla.e.cantItems().eq(0).should('have.text', ' 0 ');
              Documento.validarEstadoFilaSeleccionada('Pendiente de procesar - (pendi');
             Tabla.e.estadoIcon(id).should('exist');
-            Tabla.e.msgEstadoContent().should('have.text', 'Lote en recepcion. Procesamiento pendiente.');
-            Tabla.e.detalleContent().should('have.text', 'N/A')
+            Tabla.e.msgEstadoContent().eq(0).should('have.text', 'Lote en recepcion. Procesamiento pendiente.');
+            Tabla.e.detalleContent().eq(0).should('have.text', 'N/A')
         })
     })
 

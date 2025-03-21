@@ -9,9 +9,9 @@ class LotesIn {
         cantidadItems: () => cy.get('[data-test="report-batch-items-count"]'),
         estadoLote: () => cy.get('[data-test="report-batch-lifecycle"]'),
         despachar: () => cy.get('[data-test="report-dispatch-batch-section"]'),
-        
+        resumen: () => cy.get('[data-test="report-batch-summary-button-container"]'),
 
     }
 }
 
-export default new LotesIn();
+    export default new LotesIn();
