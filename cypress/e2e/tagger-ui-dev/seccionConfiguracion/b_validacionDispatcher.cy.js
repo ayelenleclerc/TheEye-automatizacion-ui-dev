@@ -15,13 +15,16 @@ describe("Validación Pantalla de configuración- Dispatcher", () => {
         Dispatcher.dispatcher.convertionCallback().should('be.visible');
         Dispatcher.dispatcher.habilitarToggle().contains('Deshabilitado');
         Dispatcher.dispatcher.habilitarToggle().click();
+        cy.wait(1000);
         Dispatcher.dispatcher.habilitarToggle().contains('Habilitado');
         cy.log('Toggle de habilitar funcionando');
         Dispatcher.dispatcher.urlField().should('be.visible');
         Dispatcher.dispatcher.urlInput().should('have.attr', 'required');
         Dispatcher.dispatcher.urlInput().click().should('have.attr','placeholder','https://ejemplo.com');
         Dispatcher.dispatcher.authType().should('be.visible');
+        
         Dispatcher.dispatcher.authSelect().click();
+            cy.wait(1000);
         Dispatcher.dispatcher.opcionesAuth.sinAutentificacion().should('be.visible');
         Dispatcher.dispatcher.urlError().contains("Campo requerido");
         cy.log('Input URL funcionando');
@@ -29,17 +32,20 @@ describe("Validación Pantalla de configuración- Dispatcher", () => {
         Dispatcher.dispatcher.opcionesAuth.bearerToken().should('be.visible');
         Dispatcher.dispatcher.opcionesAuth.oAuthMicrosoft().should('be.visible');
         Dispatcher.dispatcher.opcionesAuth.sinAutentificacion().click();
+            cy.wait(1000);
         Dispatcher.dispatcher.methodType().click();
         Dispatcher.dispatcher.methodSelect().eq(0).contains('post');
         Dispatcher.dispatcher.methodSelect().eq(1).contains('put');
         Dispatcher.dispatcher.methodSelect().eq(2).contains('patch');
         Dispatcher.dispatcher.methodSelect().eq(0).click();
+            cy.wait(1000);
         cy.log('Método validado')
         Dispatcher.dispatcher.payloadType().click();
         Dispatcher.dispatcher.payloadSelectOptions().eq(0).contains('json');
         Dispatcher.dispatcher.payloadSelectOptions().eq(1).contains('array');
         Dispatcher.dispatcher.payloadSelectOptions().eq(2).contains('soap');
         Dispatcher.dispatcher.payloadSelectOptions().eq(0).click();
+            cy.wait(1000);
         cy.log('Formato validado')
         Dispatcher.dispatcher.codificarBtn().click();
         Dispatcher.dispatcher.codificarBtn().click();

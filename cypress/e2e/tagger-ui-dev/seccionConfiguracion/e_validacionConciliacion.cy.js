@@ -27,7 +27,7 @@ describe("Validación Pantalla de configuración- Concialiación", () => {
         Conciliacion.conciliacion.rowFooterTable.tdSourceSchema().should('be.visible');
         Conciliacion.conciliacion.rowFooterTable.tdSourceSchemaField().should('be.visible');
         Conciliacion.conciliacion.rowFooterTable.thSourceSchemaSelect().click();
-        Conciliacion.conciliacion.rowFooterTable.thSourceSchemaOption().click();
+        Conciliacion.conciliacion.rowFooterTable.thSourceSchemaOption().contains('Factura').click();
         Conciliacion.conciliacion.rowFooterTable.spanOptionText().contains('Factura');
     });
 
@@ -35,7 +35,7 @@ describe("Validación Pantalla de configuración- Concialiación", () => {
         Conciliacion.conciliacion.rowFooterTable.thTargetSchema().should('be.visible');
         Conciliacion.conciliacion.rowFooterTable.thTargetSchemaField().should('be.visible');
         Conciliacion.conciliacion.rowFooterTable.thTargetSchemaSelect().click();
-        Conciliacion.conciliacion.rowFooterTable.thTargetSchemaOption().click();
+        Conciliacion.conciliacion.rowFooterTable.thTargetSchemaOption().contains('Factura').click();
         Conciliacion.conciliacion.rowFooterTable.spanOptionText().contains('Factura');
     });
 
@@ -104,7 +104,7 @@ describe("Validación Pantalla de configuración- Concialiación", () => {
             Conciliacion.conciliacion.rowTable.tdActions().should('be.visible');
             Conciliacion.conciliacion.rowTable.tdActionsEditBtn().should('be.visible');
             Conciliacion.conciliacion.rowTable.tdActionsRemoveBtn().should('be.visible');
-            Conciliacion.conciliacion.rowTable.tdActionsEditBtn().click();
+            Conciliacion.conciliacion.rowTable.tdActionsEditBtn().eq(0).click();
             Conciliacion.conciliacion.rowTable.tdActionsSaveBtn().should('be.visible');
             Conciliacion.conciliacion.rowTable.tdActionsSaveIcon().should('be.visible');
             Conciliacion.conciliacion.rowTable.tdActionsCancelBtn().should('be.visible');

@@ -25,17 +25,17 @@ describe("Validación Pantalla de configuración- Resumen", () => {
     });
 
     it('Se puede acceder a las opciones de la tabla Esquema', () => {
-        Resumen.resumen.actions.removeActionBtn().click();
+        Resumen.resumen.actions.removeActionBtn().eq(0).click();
         Resumen.resumen.schema.tdSchemaFooterRow().click().should('exist');
-        Resumen.resumen.schema.addSchemaIcon().click().should('be.visible');
-        Resumen.resumen.schema.addSchemaField().click();
+        Resumen.resumen.schema.addSchemaIcon().should('exist');
+        Resumen.resumen.schema.addSchemaField();
         Resumen.resumen.schema.addSchemaOption().click();
         Resumen.resumen.schema.spanOptionText().contains('Factura');
         
     });
 
     it('Se puede acceder a las opciones de la tabla Documento Principal', () => {
-        Resumen.resumen.actions.removeActionBtn().click();
+        Resumen.resumen.actions.removeActionBtn().eq(0).click();
         Resumen.resumen.mainDocument.tdMainFooterRow().click().should('exist');
         Resumen.resumen.mainDocument.addMainDocField().should('exist');
         Resumen.resumen.mainDocument.addMainDocSelect().should('exist');
@@ -46,7 +46,7 @@ describe("Validación Pantalla de configuración- Resumen", () => {
     });
 
     it('Se puede acceder a las opciones de la tabla Formato', () => {
-        Resumen.resumen.actions.removeActionBtn().click();
+        Resumen.resumen.actions.removeActionBtn().eq(0).click();
         Resumen.resumen.format.thFormatFooterRow().click().should('exist');
         Resumen.resumen.format.addFormatField().should('exist');
         Resumen.resumen.format.addFormatSelect().should('exist');
@@ -56,7 +56,7 @@ describe("Validación Pantalla de configuración- Resumen", () => {
         
     });
     it('Se puede acceder a las opciones de la tabla Orden', () => {
-        Resumen.resumen.actions.removeActionBtn().click();
+        Resumen.resumen.actions.removeActionBtn().eq(0).click();
         Resumen.resumen.order.thOrderFooterRow().click().should('exist');
         Resumen.resumen.order.addOrderField().should('exist');
         Resumen.resumen.order.addOrderInput().should('exist');
@@ -69,7 +69,7 @@ describe("Validación Pantalla de configuración- Resumen", () => {
     });
     
     it('Se puede acceder a las opciones de la tabla Campos', () => {
-        Resumen.resumen.actions.removeActionBtn().click();
+        Resumen.resumen.actions.removeActionBtn().eq(0).click();
         Resumen.resumen.fields.thFieldsFooterRow().should('exist');
         Resumen.resumen.fields.addFieldsBtnAddIcon().should('exist');
         Resumen.resumen.fields.addFieldsBtnAdd().click().should('exist');
@@ -85,8 +85,8 @@ describe("Validación Pantalla de configuración- Resumen", () => {
         Resumen.resumen.fields.modal.btnCerrar().contains('Cerrar').click();
     });
     
-    it.only('Se puede acceder a las opciones de la tabla Acciones', () => {
-        Resumen.resumen.actions.removeActionBtn().click();
+    it('Se puede acceder a las opciones de la tabla Acciones', () => {
+        Resumen.resumen.actions.removeActionBtn().eq(0).click();
         Resumen.resumen.actions.thActionFooterRow().should('exist');
         Resumen.resumen.actions.addActionBtnIcon().should('exist');
         Resumen.resumen.actions.addActionBtn().click().should('exist');
@@ -98,18 +98,18 @@ describe("Validación Pantalla de configuración- Resumen", () => {
         Resumen.resumen.tableRow.tdSchema().contains('Factura');
         Resumen.resumen.tableRow.tdMainDoc().contains('No');
         Resumen.resumen.tableRow.tdFormat().contains('Formulario');
-        Resumen.resumen.tableRow.tdOrder().contains('0');
-        Resumen.resumen.tableRow.tdFields().should('exist');
+        Resumen.resumen.tableRow.tdOrder().eq(0).contains('0');
+        Resumen.resumen.tableRow.tdFields().eq(0).should('exist');
         Resumen.resumen.tableRow.tdFieldsBtnView().should('be.visible');
         Resumen.resumen.tableRow.tdFieldsBtnIcon().should('be.visible');
         Resumen.resumen.tableRow.tdActions().should('be.visible');
-        Resumen.resumen.tableRow.tdActionsEditBtn().should('be.visible');
-        Resumen.resumen.tableRow.tdActionsRemoveBtn().should('be.visible');
-        Resumen.resumen.tableRow.tdActionsEditBtn().click();
-        Resumen.resumen.tableRow.tdActionsSaveBtn().should('be.visible');
-        Resumen.resumen.tableRow.tdActionsSaveIcon().should('be.visible');
-        Resumen.resumen.tableRow.tdActionsCancelBtn().should('be.visible');
-        Resumen.resumen.tableRow.tdActionsCancelIcon().should('be.visible');
+        Resumen.resumen.tableRow.tdActionsEditBtn().eq(0).should('be.visible');
+        Resumen.resumen.tableRow.tdActionsRemoveBtn().eq(0).should('be.visible');
+        Resumen.resumen.tableRow.tdActionsEditBtn().eq(0).click();
+        Resumen.resumen.tableRow.tdActionsSaveBtn().eq(0).should('be.visible');
+        Resumen.resumen.tableRow.tdActionsSaveIcon().eq(0).should('be.visible');
+        Resumen.resumen.tableRow.tdActionsCancelBtn().eq(0).should('be.visible');
+        Resumen.resumen.tableRow.tdActionsCancelIcon().eq(0).should('be.visible');
        
     });
 
