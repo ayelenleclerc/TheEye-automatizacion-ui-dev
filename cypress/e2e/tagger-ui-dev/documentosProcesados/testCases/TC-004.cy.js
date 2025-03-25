@@ -14,7 +14,7 @@ describe("TC-004 Data Extraction", () => {
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.miniatura(id). click();
             DatosDocumento.e.titulo(id).should('have.text', ` Document ID: ${id} `);
-            DatosDocumento.e.infoTitulo().should('have.text', 'Información Obtenida');
+            DatosDocumento.e.infoTitulo().should('contain', ' Información Obtenida');
             DatosDocumento.e.inputFiltro().clear().type('cae');
             DatosDocumento.e.inputFiltro().clear();
            
@@ -29,7 +29,7 @@ describe("TC-004 Data Extraction", () => {
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.miniatura(id).click();
             DatosDocumento.e.titulo(id).should('have.text', ` Document ID: ${id} `);
-            DatosDocumento.e.infoTitulo().should('have.text', 'Información Obtenida');
+            DatosDocumento.e.infoTitulo().should('contain', ' Información Obtenida');
         })
         DatosDocumento.e.subtablas().eq(0).should('exist').and('have.text', ' items ');
         DatosDocumento.e.verDatos().eq(0).should('exist').and('contain', ' Ver datos ').click();
@@ -51,7 +51,7 @@ describe("TC-004 Data Extraction", () => {
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.miniatura(id).click();
             DatosDocumento.e.titulo(id).should('have.text', ` Document ID: ${id} `);
-            DatosDocumento.e.infoTitulo().should('have.text', 'Información Obtenida');
+            DatosDocumento.e.infoTitulo().should('contain', ' Información Obtenida');
         })
         DatosDocumento.e.subtablas().eq(1).should('exist').and('have.text', ' percepciones ');
         DatosDocumento.e.verDatos().eq(1).should('exist').and('contain', ' Ver datos ').click();

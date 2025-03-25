@@ -88,7 +88,7 @@ class ProcesamientoManual{
             importeUnitario: () => cy.get(':nth-child(6) > .spaced-items > span').contains('importeUnitario'),
             iva: () => cy.get(':nth-child(7) > .spaced-items > span'),
             accionesItems: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th.th-actions'),
-            eliminar: ()=> cy.get(':nth-child(4) > .data-table > tbody > tr.ng-star-inserted > .td-actions > .mat-mdc-tooltip-trigger > .mat-mdc-button-touch-target'),
+            eliminar: ()=> cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > tbody > tr:nth-child(3) > td.td-actions > button:nth-child(1) > mat-icon'),
             agregarFila: () => cy.get(':nth-child(3) > .mdc-button > .mat-mdc-button-touch-target'),
       },
         
@@ -99,7 +99,7 @@ class ProcesamientoManual{
             percepcionesTipo: () => cy.get(':nth-child(4) > .data-table > thead > tr > :nth-child(3) > .spaced-items > span'),
             accionesPercepciones: () => cy.get(':nth-child(4) > .data-table > thead > tr > .th-actions'),
             eliminarIcono: () => cy.get(':nth-child(4) > .data-table > tbody > tr.ng-star-inserted > .td-actions > .mat-mdc-tooltip-trigger > .mat-icon'),
-            agregarPercepcion:() => cy.get(':nth-child(4) > .data-table > tbody > tr.ng-star-inserted > .td-actions > .mat-mdc-tooltip-trigger > .mat-mdc-button-touch-target'),
+            agregarPercepcion:() => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > button'),
               
       },
         
@@ -210,8 +210,7 @@ class ProcesamientoManual{
         this.el.tablaPercepciones.percepcionesImporte().should('have.text', ' percepciones_importe ');
         this.el.tablaPercepciones.percepcionesPorcentaje().should('have.text', ' percepciones_porcentaje ');
         this.el.tablaPercepciones.percepcionesTipo().should('have.text', ' percepciones_tipo ');
-        this.el.tablaPercepciones.accionesPercepciones().should('have.text', 'Acciones');
-        this.el.tablaPercepciones.eliminarIcono();
+        this.el.tablaPercepciones.accionesPercepciones().should('have.text', 'Acciones'); 
         this.el.tablaPercepciones.agregarPercepcion();
     }
   errorFaltaRequerido = () => {
@@ -288,13 +287,13 @@ class ProcesamientoManual{
 }
   borrarDatoParaError = () => {
     
-     cy.get('#mat-input-13').clear();
+     cy.get('#mat-input-4').clear();
         this.el.menubar.guardar().click();
         this.el.menubar.volver().click();
  }
     
  recorrerTablaValidarCampos = () => {
-  // Array con los nombres de los campos requeridos
+  
   const camposRequeridos = [
     "cae",
     "codigoDocumento",
@@ -304,23 +303,22 @@ class ProcesamientoManual{
     "importeTotal"
   ];
 
-  // Selecciona todas las filas de la tabla
+  
   cy.get('#tags > tr').each(($row) => {
-    // Obtiene el nombre del campo desde el <span> dentro del <th>
+    
     cy.wrap($row).find('th > div > span').invoke('text').then((campo) => {
-      // Limpia el texto para evitar espacios en blanco
+      
       const nombreCampo = campo.trim();
 
-      // Verifica si el campo está marcado como requerido (clase CSS 'red')
+      
       const esRequerido = $row.find('th > div > span[mattooltip="Valor requerido"]').length > 0 && $row.find('*').length > 0;
 
-      // Encuentra el valor dentro del <td>
+
       cy.wrap($row).find('td input').invoke('val').then((valor) => {
         const valorCampo = valor ? valor.trim() : "";
 
-        // Verificación según el estado del campo (requerido u opcional)
         if (esRequerido && camposRequeridos.includes(nombreCampo)) {
-          // Validación de campo requerido: no debe ser vacío o nulo
+         
           expect(valorCampo).to.not.be.empty;
           cy.log(`Campo requerido: ${nombreCampo} - Valor: ${valorCampo}`);
         } else {

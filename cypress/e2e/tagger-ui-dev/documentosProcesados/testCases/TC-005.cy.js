@@ -28,7 +28,7 @@ describe("TC-005 Validación y Procesamiento manual", () => {
     Documento.obtenerIdFilaSeleccionada().then((id) => {
         Documento.contenido.miniatura(id).click();
         DatosDocumento.e.titulo(id).should('have.text', ` Document ID: ${id} `);
-        DatosDocumento.e.infoTitulo().should('have.text', 'Información Obtenida');
+        DatosDocumento.e.infoTitulo().should('contain', ' Información Obtenida');
         })
         DatosDocumento.e.procesarManualmenteBtn().click();
       

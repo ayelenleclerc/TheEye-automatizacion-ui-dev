@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-25T17:26:43.781Z",
+    "end": "2025-03-25T17:27:15.411Z",
+    "duration": 31630,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "46bc6c7a-514f-4c4f-b4a6-6d0c7d7fb30e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\tagger-ui-dev\\documentosProcesados\\testCases\\TC-002.cy.js",
+      "file": "cypress\\e2e\\tagger-ui-dev\\documentosProcesados\\testCases\\TC-002.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e4a26431-58a5-4278-a587-70b3753dce19",
+          "title": "TC-002 Subir un comprobante, clasificar y leer Documento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Subir documento y validar estado y contenido default",
+              "fullTitle": "TC-002 Subir un comprobante, clasificar y leer Documento Subir documento y validar estado y contenido default",
+              "timedOut": null,
+              "duration": 31576,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-videos-failed\",\n  \"value\": \"cypress\\\\e2e\\\\tagger-ui-dev\\\\documentosProcesados\\\\testCases\\\\TC-002.cy.js\"\n}",
+              "code": "_agregarDocumento.default.e.agregarDoc().click();\ncy.subirPdf('/archivos/factura_Afip_lineas_percepciones.pdf');\n_agregarDocumento.default.e.progresoCarga().should('be.visible');\n_agregarDocumento.default.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');\n_agregarDocumento.default.e.cerrarUploader().click();\n_documentosEnTabla.default.contenido.checkboxRow().eq(0).click();\n_documentosEnTabla.default.obtenerIdFilaSeleccionada().then(id => {\n  _documentosEnTabla.default.contenido.checkboxInput(id).should('exist');\n  _documentosEnTabla.default.contenido.idCopyBtn(id).should('exist');\n  _documentosEnTabla.default.contenido.miniatura(id).should('exist');\n  _documentosEnTabla.default.validarFechaFilaSeleccionada();\n  _documentosEnTabla.default.contenido.nombreRow().should('be.visible');\n  _documentosEnTabla.default.contenido.documentoRow().should('exist');\n  _documentosEnTabla.default.validarEstadoFilaSeleccionada('Procesando - (converting)');\n  _documentosEnTabla.default.contenido.mensajeEstadoRow().first().should('have.text', 'El documento esta siendo procesado.');\n  cy.wait(15000);\n  cy.reload();\n  _documentosEnTabla.default.validarEstadoFilaSeleccionada('Procesado - (converted)');\n  _documentosEnTabla.default.contenido.documentoRow().first().should('be.visible').and('contain', ' Factura');\n  _documentosEnTabla.default.contenido.mensajeEstadoRow().first().should('contain', 'Datos extraídos. Puede requerir intervencion.');\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<td.mat-mdc-tooltip-trigger.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-classification_label.mat-column-classification_label.ng-star-inserted>' to contain ' Factura'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<td.mat-mdc-tooltip-trigger.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-classification_label.mat-column-classification_label.ng-star-inserted>' to contain ' Factura'\n    at Context.eval (webpack://theeye-automatizacion/./cypress/e2e/tagger-ui-dev/documentosProcesados/testCases/TC-002.cy.js:35:76)\n    at getRet (https://tagger-ui-dev.theeye.io/__cypress/runner/cypress_runner.js:118322:20)\n    at tryCatcher (https://tagger-ui-dev.theeye.io/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://tagger-ui-dev.theeye.io/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://tagger-ui-dev.theeye.io/__cypress/runner/cypress_runner.js:118333:66)\n    at Context.then (https://tagger-ui-dev.theeye.io/__cypress/runner/cypress_runner.js:118584:21)\n    at wrapped (https://tagger-ui-dev.theeye.io/__cypress/runner/cypress_runner.js:138835:19)",
+                "diff": null
+              },
+              "uuid": "fe8902be-c801-4a7c-9c85-5750cd6899dd",
+              "parentUUID": "e4a26431-58a5-4278-a587-70b3753dce19",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "fe8902be-c801-4a7c-9c85-5750cd6899dd"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 31576,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
