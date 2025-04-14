@@ -50,9 +50,9 @@ class DatosTabla {
         mensajeToast: () => cy.get('#toast-container > .ng-trigger'),
         clasificar: {
             clasificarTitulo: () => cy.get('[data-test="classify-document-dialog-title"]'),
-            clasificarDocumentoField: () => cy.get('#mat-mdc-form-field-label-16 > mat-label'),
+            clasificarDocumentoField: () => cy.get('[data-test="classify-document-schema-field"]'),
             clasificarDocumentoLabel: () => cy.get('[data-test="classify-document-schema-label"]'),
-            clasificarDocumentoOptionOP: () => cy.get('[data-test="classify-document-schema-option-67dc1d371b5670dfed91fc6c"]'),
+            clasificarDocumentoOptionOP: (schemaId) => cy.get(`[data-test="classify-document-schema-option-${schemaId}"]`),
             clasificarBtn: ()=> cy.get('[data-test="classify-document-save-button"]'),
 
         },

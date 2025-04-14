@@ -30,5 +30,8 @@ npm run test-processDoc
 corre los test case del 002 al 008 que me pasó María.
 cargar documento, clasificar de forma manual, ver tabla de datos cargados, procesamiento manual, caarga de multipagina y division de paginas.
 
+npm run test-regresionDocumentos
+Corre el regresion test de documentos procesados
+
 IMPORTANTE cada vez que se corre una prueba, reescribe el reporte, y elimina los videos anteriores.
 guardar copia de la carpeta Reports y Videos

@@ -4,23 +4,25 @@ class ProcesamientoManual{
         menubar: {
             volver: () => cy.get('[mattooltip="Ir al reporte de Documentos"]'),
             presentar: () =>cy.get('[mattooltip="Enviar documento"]'),
-            iconodesplegable: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button.mat-mdc-menu-trigger.submit-menu.mdc-button.mdc-button--outlined.mat-mdc-outlined-button.mat-unthemed.mat-mdc-button-base.ng-star-inserted'),
+            iconodesplegable: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button.mat-mdc-menu-trigger.submit-menu.mdc-button.mdc-button--outlined.mat-mdc-outlined-button.mat-unthemed.mat-mdc-button-base.ng-star-inserted'),
             invalidar: () => cy.get('.mat-mdc-menu-item-text > span'),
             cerrarDesplegable: () => cy.get('.cdk-overlay-backdrop'),
             iconoDocumentoConverted: () => cy.get('[ng-reflect-svg-icon="converted_document"] > #Capa_1'),
             nombreDocumento: () => cy.get('.file-name'),
-            visibilidadEtiquetas: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(12)').invoke('text').then((text) => {expect(text.trim()).to.be.oneOf(['label', 'label_off']);}),
-            informacionReconocimiento: ()=>cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(13) > mat-icon').invoke('text').then((text) => {expect(text.trim()).to.be.oneOf(['visibility', 'visibility_off']);}),
-            zoomIn: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(14) > mat-icon').contains('zoom_in'),
-            zoomOut: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(15) > mat-icon').contains('zoom_out'),
-            fullScreen: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(16) > mat-icon').contains('fullscreen'),
-            descargar: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button.mat-mdc-tooltip-trigger.mdc-button.mat-mdc-button.mat-unthemed.mat-mdc-button-base > mat-icon').contains('file_download'),
-            guardar: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(18) > mat-icon').contains('save'),
-            menuMostrarTablas:()=>cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(19) > mat-icon').contains('menu')
+            visibilidadEtiquetas: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(12)').invoke('text').then((text) => {expect(text.trim()).to.be.oneOf(['label', 'label_off']);}),
+            informacionReconocimiento: ()=>cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(13)').invoke('text').then((text) => {expect(text.trim()).to.be.oneOf(['visibility', 'visibility_off']);}),
+            zoomIn: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(14)').contains('zoom_in'),
+            zoomOut: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(15)').contains('zoom_out'),
+          fullScreen: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(16)').contains('fullscreen'),
+          rotarIzquierda: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(18)'),
+             rotarDerecha: ()=> cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(17)'),
+            descargar: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button.mat-mdc-tooltip-trigger.mdc-button.mat-mdc-button.mat-unthemed.mat-mdc-button-base').contains('file_download'),
+            guardar: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(20)').contains('save'),
+            menuMostrarTablas:()=>cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(21)').contains('menu')
         },
         paginador: {
-            flechaAtras: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(9)'),
-            flechaAdelante: () => cy.get('body > app-root > div > app-tagger-processing > mat-toolbar > button:nth-child(11)'),
+            flechaAtras: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(9)'),
+            flechaAdelante: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(11)'),
             contador: ()=> cy.get('.toolbar > .ng-untouched')
         },
         filtro: {
@@ -78,28 +80,28 @@ class ProcesamientoManual{
         },
 
         tablaItems: {
-            tituloTabla: () => cy.get(':nth-child(3) > h3'),
-            items_importe_total_con_iva: () => cy.get(':nth-child(3) > .data-table > thead > tr > :nth-child(1) > .spaced-items > span'),
-            items_importe_total_sin_iva: () => cy.get(':nth-child(3) > .data-table > thead > tr > :nth-child(2) > .spaced-items > span'),
+            tituloTabla: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > h3'),
+            items_importe_total_con_iva: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th:nth-child(1) > div > span'),
+            items_importe_total_sin_iva: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th:nth-child(2) > div > span'),
             scrollLateral: () => cy.get('[style="width: 100%;"] > :nth-child(3)'),
-            cantidad: () => cy.get(':nth-child(3) > .spaced-items > span').contains('cantidad'),
-            codigo: () => cy.get(':nth-child(4) > .spaced-items > span').contains('codigo'),
-            descripcion: () => cy.get(':nth-child(5) > .spaced-items > span'),
-            importeUnitario: () => cy.get(':nth-child(6) > .spaced-items > span').contains('importeUnitario'),
-            iva: () => cy.get(':nth-child(7) > .spaced-items > span'),
-            accionesItems: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th.th-actions'),
-            eliminar: ()=> cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > tbody > tr:nth-child(3) > td.td-actions > button:nth-child(1) > mat-icon'),
-            agregarFila: () => cy.get(':nth-child(3) > .mdc-button > .mat-mdc-button-touch-target'),
+            cantidad: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th:nth-child(3) > div > span').contains('cantidad'),
+            codigo: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th:nth-child(4) > div > span').contains('codigo'),
+            descripcion: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th:nth-child(5) > div > span'),
+            importeUnitario: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th:nth-child(6) > div > span').contains('importeUnitario'),
+            iva: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th:nth-child(7) > div > span'),
+            accionesItems: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > thead > tr > th:nth-child(7) > div > span'),
+            eliminar: ()=> cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > tbody > tr:nth-child(1) > td.td-actions > button:nth-child(1) > mat-icon'),
+            agregarFila: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(3) > table > tbody > tr:nth-child(1) > td.td-actions > button:nth-child(2)'),
       },
         
         tablaPercepciones: {
-            tablaTitulo: () => cy.get('div:nth-child(2) > div:nth-child(4) > h3').contains('percepciones'),
-            percepcionesImporte: () => cy.get(':nth-child(4) > .data-table > thead > tr > :nth-child(1) > .spaced-items > span'),
-            percepcionesPorcentaje: () => cy.get(':nth-child(4) > .data-table > thead > tr > :nth-child(2) > .spaced-items > span'),
-            percepcionesTipo: () => cy.get(':nth-child(4) > .data-table > thead > tr > :nth-child(3) > .spaced-items > span'),
-            accionesPercepciones: () => cy.get(':nth-child(4) > .data-table > thead > tr > .th-actions'),
-            eliminarIcono: () => cy.get(':nth-child(4) > .data-table > tbody > tr.ng-star-inserted > .td-actions > .mat-mdc-tooltip-trigger > .mat-icon'),
-            agregarPercepcion:() => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > button'),
+            tablaTitulo: () =>cy.get(':nth-child(4) > h3').contains('percepciones'),
+            percepcionesImporte: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > thead > tr > th:nth-child(1) > div > span'),
+            percepcionesPorcentaje: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > thead > tr > th:nth-child(2) > div > span'),
+            percepcionesTipo: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > thead > tr > th:nth-child(3) > div > span'),
+            accionesPercepciones: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > thead > tr > th.th-actions'),
+            eliminarIcono: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > tbody > tr > td.td-actions > button:nth-child(1) > mat-icon'),
+            agregarPercepcion:() => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > tbody > tr > td.td-actions > button:nth-child(2)'),
               
       },
         
@@ -220,9 +222,9 @@ class ProcesamientoManual{
             }).as('apiRequest');
 
     this.el.menubar.presentar().click();
-    cy.wait(2000);
+    cy.wait(500);
     this.el.otros.errorInput(); 
-    this.el.otros.avisoToast().should('have.text', ' El documento debe ser corregido para continuar ');
+    this.el.otros.avisoToast().should('contain', ' debe corregir el documento ');
    
 };
 
@@ -246,7 +248,7 @@ class ProcesamientoManual{
       cy.wait(2000);
         this.el.menubar.presentar().click();
         this.el.otros.errorInput(); 
-    this.el.otros.avisoToast().should('have.text', ' El documento debe ser corregido para continuar ');
+    this.el.otros.avisoToast().should('have.text', ' debe corregir el documento ');
   }
 
     completarDatoFaltante = () => {

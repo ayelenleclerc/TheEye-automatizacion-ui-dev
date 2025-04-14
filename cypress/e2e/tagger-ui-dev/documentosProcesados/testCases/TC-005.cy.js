@@ -11,7 +11,7 @@ describe("TC-005 Validación y Procesamiento manual", () => {
     beforeEach(() => {
       cy.ingresar_Documentos_Procesados();
     })
-    it.skip('Agregar documento con datos faltantes', () => {
+    it('Agregar documento con datos faltantes', () => {
         Agregar.e.agregarDoc().click();
         cy.subirPdf('/archivos/factura_dato_faltante.pdf');
                
