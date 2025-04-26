@@ -13,7 +13,9 @@
     "test-processDoc": "cypress run --browser chrome --spec ./cypress/e2e/tagger-ui-dev/documentosProcesados/testCases/*.cy.js",
      "test-lotes": "cypress run --browser chrome --spec ./cypress/e2e/tagger-ui-dev/lotes/*.cy.js",
      "test-schemas": "cypress run --browser chrome --spec ./cypress/e2e/tagger-ui-dev/esquemas/*.cy.js",
-     "test-regresionDocumentos": "cypress run --browser chrome --spec ./cypress/e2e/regresionTest/documentos.cy.js"
+     "test-regresionDocumentos": "cypress run --browser chrome --spec ./cypress/e2e/regresionTest/documentos.cy.js",
+     "test-regresionLotes": "cypress run --browser chrome --spec ./cypress/e2e/regresionTest/lotes.cy.js",
+     "test-regresionEsquemas": "cypress run --browser chrome --spec ./cypress/e2e/regresionTest/esquemas.cy.js"
 
      
 

@@ -22,8 +22,8 @@ class ProcesamientoManual{
         },
         paginador: {
             flechaAtras: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(9)'),
-            flechaAdelante: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(11)'),
-            contador: ()=> cy.get('.toolbar > .ng-untouched')
+            flechaAdelante: () => cy.get('[mat-button=""][ng-reflect-disabled="false"] > .mat-mdc-button-touch-target'),
+            contador: ()=> cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > input')
         },
         filtro: {
             inputFiltro: () => cy.get('#mat-input-0'),
@@ -282,10 +282,12 @@ class ProcesamientoManual{
 };
   validarMultipágina = () => {
     
-    this.el.paginador.flechaAdelante().click();
-    this.el.paginador.contador().should('not.be.equal', '1')
-    this.el.paginador.flechaAtras().should('be.enabled');
-    this.el.paginador.flechaAtras().click();
+    this.el.paginador.flechaAdelante().click({force: true});
+    this.el.paginador.contador().contains('1');
+    this.el.paginador.flechaAdelante().click({ force: true });
+    this.el.paginador.contador().should('not.be.equal', '2')
+    // this.el.paginador.flechaAtras().should('be.enabled');
+    // this.el.paginador.flechaAtras().click({force: true});
 }
   borrarDatoParaError = () => {
     

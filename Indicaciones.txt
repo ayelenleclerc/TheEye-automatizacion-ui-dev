@@ -30,8 +30,26 @@ npm run test-processDoc
 corre los test case del 002 al 008 que me pasó María.
 cargar documento, clasificar de forma manual, ver tabla de datos cargados, procesamiento manual, caarga de multipagina y division de paginas.
 
+
+TEST DE Regresion
+
+Para correr los test de regresion, primero configurar desde Esquemas, el documento principal.
+
+
 npm run test-regresionDocumentos
+Asegurarse que Documentos procesados esté vacío
 Corre el regresion test de documentos procesados
+
+npm run test-regresionLotes
+Asegurarse que Lotes esté vacío
+Corre el regresion test de lotes
+
+npm run test-regresionEsquemas
+Corre el regresion test de esquemas
+(crea, modifica, importa y elimina  Verificar que no borre algún esquema de más, por errores de cypress puede pasar.)
+En caso de elimir algun esquema de más, como echeq u orden de pago, en la carpeta fixtures, dentro, en la carpeta schemas estan los esquemas para importar
+En caso de importar algun nuevo esquema, ir a la carpeta fixtures, dentro, ir a la carpeta schemas buscar el archivo schemasId y reemplazar los valores por 
+los id que figuran en la app. 
 
 IMPORTANTE cada vez que se corre una prueba, reescribe el reporte, y elimina los videos anteriores.
 guardar copia de la carpeta Reports y Videos

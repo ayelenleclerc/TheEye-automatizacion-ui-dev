@@ -58,9 +58,9 @@ class DatosTabla {
         },
         extraer: {
             esquema: () => cy.get('[data-test="excel-extraction-schema-field"]'),
-            OPOption: () => cy.get('[data-test="excel-extraction-schema-option-67dc1d371b5670dfed91fc6c"]'),
-            eCheqOption: () => cy.get('[data-test="excel-extraction-schema-option-67dc0b821b5670dfed91fc3b"]'),
-            facturaOption: () => cy.get('[data-test="excel-extraction-schema-option-67a20b6cafbd964ec85ed356"]'),
+            OPOption: (schemaId) => cy.get(`[data-test="excel-extraction-schema-option-${schemaId}"]`),
+            eCheqOption: (schemaId) => cy.get(`[data-test="excel-extraction-schema-option-${schemaId}"]`),
+            facturaOption: (schemaId) => cy.get(`[data-test="excel-extraction-schema-option-${schemaId}"]`),
             cantFilasInput: () => cy.get('[data-test="excel-extraction-data-row-input"]'),
             extraerBtn: () => cy.get('[data-test="excel-extraction-extract-button"]'),
         },
