@@ -66,7 +66,7 @@ describe('Regresion Test Documentos', () => {
     
     it('Cambiar fechas manualmente', () => {
     
-        FechaYFiltro.e.fechaInicio().clear().type('05/03/2016{enter}');
+        FechaYFiltro.e.fechaInicio().clear().type('05/04/2016{enter}');
         FechaYFiltro.e.fechaField().should('be.visible');
         FechaYFiltro.e.fechaFin().clear().type('04/11/2020{enter}');
     })
@@ -90,8 +90,8 @@ describe('Regresion Test Documentos', () => {
         FechaYFiltro.e.datePicker().click(); 
         FechaYFiltro.e.elegirfecha().contains('15').click(); 
         FechaYFiltro.e.elegirfecha().contains('21').click();
-        FechaYFiltro.e.fechaInicio().should('have.value', '15/03/2025');
-        FechaYFiltro.e.fechaFin().should('have.value', '21/03/2025'); 
+        FechaYFiltro.e.fechaInicio().should('have.value', '15/04/2025');
+        FechaYFiltro.e.fechaFin().should('have.value', '21/04/2025'); 
     });
     
     it('Debe seleccionar una fecha en el datepicker/año-mes', () => {
@@ -420,7 +420,7 @@ describe('Regresion Test Documentos', () => {
         cy.reload();
     });
     
-    it.only('En el proceso manual, se deben ver todas las páginas', () => {
+    it('En el proceso manual, se deben ver todas las páginas', () => {
         cy.visit('/document')
         Documento.ingresar();
         ProcesamientoManual.validarMultipágina();

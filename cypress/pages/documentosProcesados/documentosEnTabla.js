@@ -66,10 +66,35 @@ class DatosTabla {
         },
         eCheqInputs: {
             cuentaDestino: () => cy.get('[data-test="excel-extraction-col-cell-column-input-0"]'),
+            eliminarCuentaDestino: () => cy.get('[data-test="excel-extraction-col-cell-actions-0"]'),
+            eliminarCuentaDestinoConfirm: () => cy.get('[data-test="excel-extraction-col-cell-confirm-btn-0"]'),
+            eliminarCuentaDestinoCancel: () => cy.get('[data-test="excel-extraction-col-cell-cancel-btn-0"]'),
+            
             fechaPago: () => cy.get('[data-test="excel-extraction-col-cell-column-input-1"]'),
+            eliminarFechaPago: () => cy.get('[data-test="excel-extraction-col-cell-remove-icon-1"]'),
+            eliminarFechaPagoConfirm: () => cy.get('[data-test="excel-extraction-col-cell-confirm-btn-1"]'),
+            eliminarFechaPagoCancel: () => cy.get('[data-test="excel-extraction-col-cell-cancel-btn-1"]'),
+            
             monto: () => cy.get('[data-test="excel-extraction-col-cell-column-input-2"]'),
+            eliminarMonto: () => cy.get('[data-test="excel-extraction-col-cell-remove-icon-2"]'),
+            eliminarMontoConfirm: () => cy.get('[data-test="excel-extraction-col-cell-confirm-btn-2"]'),
+            eliminarMontoCancel: () => cy.get('[data-test="excel-extraction-col-cell-cancel-btn-2"]'),
+
             nroCheque: () => cy.get('[data-test="excel-extraction-col-cell-column-input-3"]'),
-          
+            eliminarNroCheque: () => cy.get('[data-test="excel-extraction-col-cell-remove-icon-3"]'),
+            eliminarNroChequeConfirm: () => cy.get('[data-test="excel-extraction-col-cell-confirm-btn-3"]'),
+            eliminarNroChequeCancel: () => cy.get('[data-test="excel-extraction-col-cell-cancel-btn-3"]'),
+
+            col4: () => cy.get('[data-test="excel-extraction-col-cell-column-input-4"]'),
+            eliminarCol4: () => cy.get('[data-test="excel-extraction-col-cell-remove-icon-4"]'),
+            eliminarCol4Confirm: () => cy.get('[data-test="excel-extraction-col-cell-confirm-btn-4"]'),
+            eliminarCol4Cancel: () => cy.get('[data-test="excel-extraction-col-cell-cancel-btn-4"]'),
+            
+            col5: () => cy.get('[data-test="excel-extraction-col-cell-column-input-5"]'),
+            eliminarCol5: () => cy.get('[data-test="excel-extraction-col-cell-remove-icon-5"]'),
+            eliminarCol5Confirm: () => cy.get('[data-test="excel-extraction-col-cell-confirm-btn-5"]'),
+            eliminarCol5Cancel: () => cy.get('[data-test="excel-extraction-col-cell-cancel-btn-5"]'),
+
         }
     };
         /**

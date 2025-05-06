@@ -6,7 +6,12 @@ class NuevoEsquema{
         nombreError: () => cy.get('[data-test="schema-config-name-error-required"]'),
         idExtractorLabel: () => cy.get('[data-test="schema-config-processor-id-label"]'),
         idExtractorInput: () => cy.get('[data-test="schema-config-processor-id-input"]'),
-        importarBtn: () => cy.get('[data-test="schema-config-import-button"]'),
+        importarBtn: () => cy.get('[data-test="schema-config-import-menu-button"]'),
+        agregarDocBtn: () => cy.get('[data-test="schema-config-import-file-button"] > .mat-mdc-menu-item-text > span'),
+        importarDocBtn: () => cy.get('input#schema_import'),
+        agregarJsonBtn: () => cy.get('[data-test="schema-config-import-json-button"]'),
+        inputJson: () => cy.get('#mat-input-2'),
+        importarJsonBtn: () => cy.get('.mat-mdc-dialog-actions > .mdc-button--raised > .mat-mdc-button-touch-target'),
         agregarPropBtn: () => cy.get('[data-test="schema-config-add-property-button"]'),
         guardarBtn: () => cy.get('[data-test="schema-config-save-button"]'),
     }

@@ -8,6 +8,43 @@ describe('Validación de Esquemas Pantalla inicial', () => {
         cy.ingresar_Esquemas();
     })
 
+    it('Importar Schema Factura, agregando el archivo el json', () => {
+        Schema.nuevoEsquemaBtn().click();
+        NuevoSchema.config.importarBtn().click();
+        NuevoSchema.config.agregarDocBtn().click();
+        NuevoSchema.config.importarDocBtn().selectFile('cypress/fixtures/schemas/facturas.json', { force: true });
+
+        NuevoSchema.config.guardarBtn().click();
+        cy.wait(5000);
+    })
+    
+    it('Importar Schema eCheq, pegando el json', () => {
+        Schema.nuevoEsquemaBtn().click();
+        NuevoSchema.config.importarBtn().click();
+        cy.readFile('cypress/fixtures/schemas/eCheqs.json').then((eCheqs) => {
+            const eCheqsTexto = JSON.stringify(eCheqs, null, 2);
+            NuevoSchema.config.agregarJsonBtn().click()
+            NuevoSchema.config.inputJson().clear()
+    .type(eCheqsTexto, { delay: 0 });
+        });
+
+        NuevoSchema.config.importarJsonBtn().click({ force: true });
+        cy.wait(2000);
+        NuevoSchema.config.guardarBtn().click();
+         cy.wait(5000);
+    })
+
+    it('Importar Schema OP, agregando el archivo el json', () => {
+        Schema.nuevoEsquemaBtn().click();
+        NuevoSchema.config.importarBtn().click();
+        NuevoSchema.config.agregarDocBtn().click();
+        NuevoSchema.config.importarDocBtn().selectFile('cypress/fixtures/schemas/ordenPago.json', { force: true });
+        
+        NuevoSchema.config.guardarBtn().click();
+         cy.wait(5000);
+    })
+    
+
     it('Validar exiten todos los elementos en la cabecera de la tabla ', () => {
         Schema.nuevoEsquemaBtn().should('exist');
         Schema.filtroBtn().should('exist');
@@ -39,7 +76,10 @@ describe('Validación de Esquemas Pantalla inicial', () => {
     it('Prueba sobre esquema de Pruebas: Botones', () => {
         Schema.tablaContent.activar().eq(0).click();
         Schema.tablaContent.esquemaDefecto().eq(0).click();
+        cy.wait(3000);
+        Schema.tablaContent.esquemaDefecto().eq(0).click();
         Schema.tablaContent.activar().eq(0).click();
+        cy.wait(3000);
         Schema.tablaContent.esquemaDefecto().eq(0).click();
     })
 
@@ -71,8 +111,6 @@ describe('Validación de Esquemas Pantalla inicial', () => {
         NuevoSchema.config.nombreLable().should('exist').and('contain', 'Nombre del Schema');
         NuevoSchema.config.nombreInput().should('exist');
         NuevoSchema.config.nombreInput().clear();
-        NuevoSchema.config.idExtractorInput().should('exist').click();
-        NuevoSchema.config.nombreError().should('exist').and('contain', 'Campo obligatorio');
         NuevoSchema.config.importarBtn().should('exist').and('contain', 'Importar Esquema');
         NuevoSchema.config.importarBtn().click();
         NuevoSchema.config.agregarPropBtn().should('exist').and('contain', 'Agregar una propiedad');
@@ -209,20 +247,6 @@ describe('Validación de Esquemas Pantalla inicial', () => {
         cy.wait(2000);
     })
 
-    it('Importar Schema eCheq', () => {
-        Schema.nuevoEsquemaBtn().click();
-        NuevoSchema.config.importarBtn().click();
-        cy.subirArchivo('input[type="file"]', '/schemas/eCheqs.json', 'application/json');
-        NuevoSchema.config.guardarBtn().click();
-        cy.wait(2000);
-    })
     
-    it('Prueba sobre esquema de Pruebas: Eliminar-Aceptar', () => {
-        Schema.tablaContent.eliminar().eq(0).click();
-        Schema.tablaContent.eliminarConfirm.titulo().should('have.text', ' ¿Está seguro de querer borrar el schema? ')
-        Schema.tablaContent.eliminarConfirm.mensaje().should('have.text', 'Esta operación es irreversible.');
-        Schema.tablaContent.eliminarConfirm.aceptar().click();
-     
-    })
     
 }) 

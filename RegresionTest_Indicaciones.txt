@@ -1,0 +1,13 @@
+ORDEN DE EJECUCIÓN
+
+1- Eliminar todos los esquemas
+2- npm run test-regresionEsquemas
+3- Ir al archivo cypress/fixtures/schemas/schemasId.json, reemplazar los id por los actuales.
+4- Guardar una copia de la carpeta Reports (ejemplo: reporte-esquemas-"fecha")
+5- Verificar que la tabla de Lotes esté vacía
+6- npm run test-regresionLotes
+7- Guardar una copia de la carpeta Reports (ejemplo: reporte-lotes-"fecha")
+8- Modificar manualmente en Esquemas el Esquema por defecto, dejar activo Factura
+9- Verificar que la tabla de Documentos procesados esté vacía
+10- npm run test-regresionDocumentos
+11- Guardar una copia de la carpeta Reports (ejemplo: reporte-documentos-"fecha")
