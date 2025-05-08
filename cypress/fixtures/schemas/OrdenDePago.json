@@ -1,0 +1,822 @@
+{
+  "name": "Orden De Pago",
+  "default": false,
+  "import_xls_skip_rows": 2,
+  "classification_label": null,
+  "classification_description": null,
+  "properties": [
+    {
+      "id": "05971260-cef9-11ef-bceb-e339bc14df7f",
+      "label": "conciliacion",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "order": 0,
+      "display_name": "Conciliación",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "05971261-cef9-11ef-bceb-e339bc14df7f",
+      "label": "cuentaCliente",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "order": 0,
+      "display_name": "Cuenta Cliente",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "https://supervisor.theeye.io/85797d5e-f092-54af-b726-cd4dc71f6fef/file/66ec842d76cfb0001378abbd/download?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJ0aGVleWUiLCJlbWFpbCI6Ijg1Nzk3ZDVlLWYwOTItNTRhZi1iNzI2LWNkNGRjNzFmNmZlZi1jMDQ1N2I5NzYxNDhmZGQ0MGZlYzkzY2E2ZTk3YWY1NzgzYzYwOTFkLWludGVncmF0aW9uQHRoZWV5ZS5pbyIsInVzZXJuYW1lIjoiODU3OTdkNWUtZjA5Mi01NGFmLWI3MjYtY2Q0ZGM3MWY2ZmVmLWMwNDU3Yjk3NjE0OGZkZDQwZmVjOTNjYTZlOTdhZjU3ODNjNjA5MWQtaW50ZWdyYXRpb24iLCJ1c2VyX2lkIjoiNjZkOWE1NzJlNDUzMWMwMDEzMjM1MjBlIiwib3JnX3V1aWQiOiI4NTc5N2Q1ZS1mMDkyLTU0YWYtYjcyNi1jZDRkYzcxZjZmZWYiLCJjcmVkZW50aWFsIjoiaW50ZWdyYXRpb24iLCJpYXQiOjE3MjU1Mzk2OTh9.JD_SjIsF4tsODECHeMmrM1Dq9gENeI8F2c1eKg0XoMI",
+        "key": "CUENTA",
+        "value": "CUENTA",
+        "type": "json"
+      }
+    },
+    {
+      "id": "05971262-cef9-11ef-bceb-e339bc14df7f",
+      "label": "cuitCliente",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [
+        "cuit"
+      ],
+      "type": "number",
+      "type_options": {
+        "min": 11,
+        "max": 11,
+        "pattern": ""
+      },
+      "order": 1,
+      "display_name": "Cuit Cliente",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "90d86bc0-d26f-11ef-9fef-971949459eda",
+      "label": "cuitJuridica",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [
+        "cuit"
+      ],
+      "type": "number",
+      "type_options": {
+        "min": 11,
+        "max": 11,
+        "pattern": ""
+      },
+      "order": 3,
+      "display_name": "Cuit Jurídica",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "1be93900-751f-11ef-92bd-89dbdb07b87a",
+      "label": "fechaEmision",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "date",
+      "type_options": {},
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": true,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "3ff01c70-6952-11ef-bdf8-7db0f052e9fa",
+      "label": "importeTotal",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "money",
+      "type_options": {},
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "b804b510-907e-11ef-9508-59bd40273af6",
+      "label": "moneda",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "https://supervisor.theeye.io/85797d5e-f092-54af-b726-cd4dc71f6fef/file/6717aaaec7747f0013cda6f3/download?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJ0aGVleWUiLCJlbWFpbCI6Ijg1Nzk3ZDVlLWYwOTItNTRhZi1iNzI2LWNkNGRjNzFmNmZlZi1jMDQ1N2I5NzYxNDhmZGQ0MGZlYzkzY2E2ZTk3YWY1NzgzYzYwOTFkLWludGVncmF0aW9uQHRoZWV5ZS5pbyIsInVzZXJuYW1lIjoiODU3OTdkNWUtZjA5Mi01NGFmLWI3MjYtY2Q0ZGM3MWY2ZmVmLWMwNDU3Yjk3NjE0OGZkZDQwZmVjOTNjYTZlOTdhZjU3ODNjNjA5MWQtaW50ZWdyYXRpb24iLCJ1c2VyX2lkIjoiNjZkOWE1NzJlNDUzMWMwMDEzMjM1MjBlIiwib3JnX3V1aWQiOiI4NTc5N2Q1ZS1mMDkyLTU0YWYtYjcyNi1jZDRkYzcxZjZmZWYiLCJjcmVkZW50aWFsIjoiaW50ZWdyYXRpb24iLCJpYXQiOjE3MjU1Mzk2OTh9.JD_SjIsF4tsODECHeMmrM1Dq9gENeI8F2c1eKg0XoMI",
+        "key": "value",
+        "value": "value",
+        "type": "json"
+      }
+    },
+    {
+      "id": "79ad9f40-a73d-11ef-9808-ddca9992727b",
+      "label": "nroOrdenPago",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": true,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": ""
+      }
+    },
+    {
+      "id": "fb916e83-6168-11ef-a218-e7ba182d194d",
+      "label": "razonSocialCliente",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "2b1dab60-a6b9-11ef-9808-ddca9992727b",
+      "label": "tablaComprobantes",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "table",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "order": null,
+      "display_name": "Comprobantes",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "83ef3d60-63d6-11ef-a420-0b744f9df1f5",
+      "label": "letraDocumento",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaComprobantes",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "ee7061e0-916d-11ef-9508-59bd40273af6",
+      "label": "nroFactura",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [
+        "numeroFactura"
+      ],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaComprobantes",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "fa82f9c0-649f-11ef-baa7-8d657d94c80b",
+      "label": "importe",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "money",
+      "type_options": {},
+      "child_of": "tablaComprobantes",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "7c460710-775e-11ef-9f54-d534a8aa40cc",
+      "label": "tipoDocumento",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaComprobantes",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": ""
+      }
+    },
+    {
+      "id": "2b1dab61-a6b9-11ef-9808-ddca9992727b",
+      "label": "tablaPagos",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "table",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "order": null,
+      "display_name": "Pagos",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "f6da6bd0-76c1-11ef-a4d6-356dbdddfdd1",
+      "label": "tipoDocumento",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaPagos",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "https://supervisor.theeye.io/85797d5e-f092-54af-b726-cd4dc71f6fef/file/66ec82cf76cfb00013785473/download?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJ0aGVleWUiLCJlbWFpbCI6Ijg1Nzk3ZDVlLWYwOTItNTRhZi1iNzI2LWNkNGRjNzFmNmZlZi1jMDQ1N2I5NzYxNDhmZGQ0MGZlYzkzY2E2ZTk3YWY1NzgzYzYwOTFkLWludGVncmF0aW9uQHRoZWV5ZS5pbyIsInVzZXJuYW1lIjoiODU3OTdkNWUtZjA5Mi01NGFmLWI3MjYtY2Q0ZGM3MWY2ZmVmLWMwNDU3Yjk3NjE0OGZkZDQwZmVjOTNjYTZlOTdhZjU3ODNjNjA5MWQtaW50ZWdyYXRpb24iLCJ1c2VyX2lkIjoiNjZkOWE1NzJlNDUzMWMwMDEzMjM1MjBlIiwib3JnX3V1aWQiOiI4NTc5N2Q1ZS1mMDkyLTU0YWYtYjcyNi1jZDRkYzcxZjZmZWYiLCJjcmVkZW50aWFsIjoiaW50ZWdyYXRpb24iLCJpYXQiOjE3MjU1Mzk2OTh9.JD_SjIsF4tsODECHeMmrM1Dq9gENeI8F2c1eKg0XoMI",
+        "key": "tipo",
+        "value": "tipo",
+        "type": "json"
+      }
+    },
+    {
+      "id": "903faa10-63d5-11ef-a420-0b744f9df1f5",
+      "label": "banco",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaPagos",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "87c4de90-6949-11ef-bdf8-7db0f052e9fa",
+      "label": "fecha",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "date",
+      "type_options": {},
+      "child_of": "tablaPagos",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "aacfacf0-69ec-11ef-82c9-1978607ef89d",
+      "label": "nroComprobante",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaPagos",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "74f6e270-76c0-11ef-a4d6-356dbdddfdd1",
+      "label": "cuentaDestino",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaPagos",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "https://supervisor.theeye.io/85797d5e-f092-54af-b726-cd4dc71f6fef/file/66d8c54b76cfb0001343231d/download?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJ0aGVleWUiLCJlbWFpbCI6Ijg1Nzk3ZDVlLWYwOTItNTRhZi1iNzI2LWNkNGRjNzFmNmZlZi1jMDQ1N2I5NzYxNDhmZGQ0MGZlYzkzY2E2ZTk3YWY1NzgzYzYwOTFkLWludGVncmF0aW9uQHRoZWV5ZS5pbyIsInVzZXJuYW1lIjoiODU3OTdkNWUtZjA5Mi01NGFmLWI3MjYtY2Q0ZGM3MWY2ZmVmLWMwNDU3Yjk3NjE0OGZkZDQwZmVjOTNjYTZlOTdhZjU3ODNjNjA5MWQtaW50ZWdyYXRpb24iLCJ1c2VyX2lkIjoiNjZkOWE1NzJlNDUzMWMwMDEzMjM1MjBlIiwib3JnX3V1aWQiOiI4NTc5N2Q1ZS1mMDkyLTU0YWYtYjcyNi1jZDRkYzcxZjZmZWYiLCJjcmVkZW50aWFsIjoiaW50ZWdyYXRpb24iLCJpYXQiOjE3MjU1Mzk2OTh9.JD_SjIsF4tsODECHeMmrM1Dq9gENeI8F2c1eKg0XoMI",
+        "key": "nombre_cuenta_bancaria",
+        "value": "nombre_cuenta_bancaria",
+        "type": "json"
+      }
+    },
+    {
+      "id": "bece4390-7781-11ef-985a-3b7af8f217da",
+      "label": "importe",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "money",
+      "type_options": {},
+      "child_of": "tablaPagos",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "b27411a0-efcd-11ef-aed2-8540a6c3dbe3",
+      "label": "documentoVinculado",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "child_of": "tablaPagos",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "05973970-cef9-11ef-bceb-e339bc14df7f",
+      "label": "unidadNegocio",
+      "multiple": false,
+      "required": false,
+      "default_value": "",
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "child_of": "tablaPagos",
+      "order": 1,
+      "display_name": "Unidad de negocio",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "https://supervisor.theeye.io/85797d5e-f092-54af-b726-cd4dc71f6fef/file/66ec81aa76cfb00013780d69/download?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJ0aGVleWUiLCJlbWFpbCI6Ijg1Nzk3ZDVlLWYwOTItNTRhZi1iNzI2LWNkNGRjNzFmNmZlZi1jMDQ1N2I5NzYxNDhmZGQ0MGZlYzkzY2E2ZTk3YWY1NzgzYzYwOTFkLWludGVncmF0aW9uQHRoZWV5ZS5pbyIsInVzZXJuYW1lIjoiODU3OTdkNWUtZjA5Mi01NGFmLWI3MjYtY2Q0ZGM3MWY2ZmVmLWMwNDU3Yjk3NjE0OGZkZDQwZmVjOTNjYTZlOTdhZjU3ODNjNjA5MWQtaW50ZWdyYXRpb24iLCJ1c2VyX2lkIjoiNjZkOWE1NzJlNDUzMWMwMDEzMjM1MjBlIiwib3JnX3V1aWQiOiI4NTc5N2Q1ZS1mMDkyLTU0YWYtYjcyNi1jZDRkYzcxZjZmZWYiLCJjcmVkZW50aWFsIjoiaW50ZWdyYXRpb24iLCJpYXQiOjE3MjU1Mzk2OTh9.JD_SjIsF4tsODECHeMmrM1Dq9gENeI8F2c1eKg0XoMI",
+        "key": "unidad_negocio",
+        "value": "unidad_negocio",
+        "type": "json"
+      }
+    },
+    {
+      "id": "a722ded0-bbc0-11ef-b737-970390624668",
+      "label": "claseCambioPago",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "child_of": "tablaPagos",
+      "order": 0,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "https://supervisor.theeye.io/85797d5e-f092-54af-b726-cd4dc71f6fef/file/6717b1d8c2b31d0013309569/download?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJ0aGVleWUiLCJlbWFpbCI6Ijg1Nzk3ZDVlLWYwOTItNTRhZi1iNzI2LWNkNGRjNzFmNmZlZi1jMDQ1N2I5NzYxNDhmZGQ0MGZlYzkzY2E2ZTk3YWY1NzgzYzYwOTFkLWludGVncmF0aW9uQHRoZWV5ZS5pbyIsInVzZXJuYW1lIjoiODU3OTdkNWUtZjA5Mi01NGFmLWI3MjYtY2Q0ZGM3MWY2ZmVmLWMwNDU3Yjk3NjE0OGZkZDQwZmVjOTNjYTZlOTdhZjU3ODNjNjA5MWQtaW50ZWdyYXRpb24iLCJ1c2VyX2lkIjoiNjZkOWE1NzJlNDUzMWMwMDEzMjM1MjBlIiwib3JnX3V1aWQiOiI4NTc5N2Q1ZS1mMDkyLTU0YWYtYjcyNi1jZDRkYzcxZjZmZWYiLCJjcmVkZW50aWFsIjoiaW50ZWdyYXRpb24iLCJpYXQiOjE3MjU1Mzk2OTh9.JD_SjIsF4tsODECHeMmrM1Dq9gENeI8F2c1eKg0XoMI",
+        "key": "value",
+        "value": "value",
+        "type": "text"
+      }
+    },
+    {
+      "id": "05973971-cef9-11ef-bceb-e339bc14df7f",
+      "label": "tipoCambioPago",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "money",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "child_of": "tablaPagos",
+      "order": 0,
+      "display_name": "Tipo de cambio del pago",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "05973972-cef9-11ef-bceb-e339bc14df7f",
+      "label": "numeroTransaccionPago",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "child_of": "tablaPagos",
+      "order": 0,
+      "display_name": "Número de transacción del pago",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "2b1dd270-a6b9-11ef-9808-ddca9992727b",
+      "label": "tablaRetenciones",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "table",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "order": null,
+      "display_name": "Retenciones",
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "db651140-7769-11ef-8baa-e1e0eb385d09",
+      "label": "unidadNegocio",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaRetenciones",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "https://supervisor.theeye.io/85797d5e-f092-54af-b726-cd4dc71f6fef/file/66ec81aa76cfb00013780d69/download?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJ0aGVleWUiLCJlbWFpbCI6Ijg1Nzk3ZDVlLWYwOTItNTRhZi1iNzI2LWNkNGRjNzFmNmZlZi1jMDQ1N2I5NzYxNDhmZGQ0MGZlYzkzY2E2ZTk3YWY1NzgzYzYwOTFkLWludGVncmF0aW9uQHRoZWV5ZS5pbyIsInVzZXJuYW1lIjoiODU3OTdkNWUtZjA5Mi01NGFmLWI3MjYtY2Q0ZGM3MWY2ZmVmLWMwNDU3Yjk3NjE0OGZkZDQwZmVjOTNjYTZlOTdhZjU3ODNjNjA5MWQtaW50ZWdyYXRpb24iLCJ1c2VyX2lkIjoiNjZkOWE1NzJlNDUzMWMwMDEzMjM1MjBlIiwib3JnX3V1aWQiOiI4NTc5N2Q1ZS1mMDkyLTU0YWYtYjcyNi1jZDRkYzcxZjZmZWYiLCJjcmVkZW50aWFsIjoiaW50ZWdyYXRpb24iLCJpYXQiOjE3MjU1Mzk2OTh9.JD_SjIsF4tsODECHeMmrM1Dq9gENeI8F2c1eKg0XoMI",
+        "key": "unidad_negocio",
+        "value": "unidad_negocio",
+        "type": "json"
+      }
+    },
+    {
+      "id": "2ec03c81-616b-11ef-a218-e7ba182d194d",
+      "label": "numeroCertificado",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaRetenciones",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "b33fdf80-769f-11ef-bef5-8139ae55c6f4",
+      "label": "tipoRetencion",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {},
+      "child_of": "tablaRetenciones",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "https://supervisor.theeye.io/85797d5e-f092-54af-b726-cd4dc71f6fef/file/66d8c54b76cfb00013432363/download?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJ0aGVleWUiLCJlbWFpbCI6Ijg1Nzk3ZDVlLWYwOTItNTRhZi1iNzI2LWNkNGRjNzFmNmZlZi1jMDQ1N2I5NzYxNDhmZGQ0MGZlYzkzY2E2ZTk3YWY1NzgzYzYwOTFkLWludGVncmF0aW9uQHRoZWV5ZS5pbyIsInVzZXJuYW1lIjoiODU3OTdkNWUtZjA5Mi01NGFmLWI3MjYtY2Q0ZGM3MWY2ZmVmLWMwNDU3Yjk3NjE0OGZkZDQwZmVjOTNjYTZlOTdhZjU3ODNjNjA5MWQtaW50ZWdyYXRpb24iLCJ1c2VyX2lkIjoiNjZkOWE1NzJlNDUzMWMwMDEzMjM1MjBlIiwib3JnX3V1aWQiOiI4NTc5N2Q1ZS1mMDkyLTU0YWYtYjcyNi1jZDRkYzcxZjZmZWYiLCJjcmVkZW50aWFsIjoiaW50ZWdyYXRpb24iLCJpYXQiOjE3MjU1Mzk2OTh9.JD_SjIsF4tsODECHeMmrM1Dq9gENeI8F2c1eKg0XoMI",
+        "key": "value",
+        "value": "",
+        "type": "json"
+      }
+    },
+    {
+      "id": "fec9c390-9886-11ef-b698-3192d75aacbc",
+      "label": "importe",
+      "multiple": false,
+      "required": true,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "money",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "child_of": "tablaRetenciones",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "18281fd0-909e-11ef-9508-59bd40273af6",
+      "label": "fechaRetencion",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "date",
+      "type_options": {},
+      "child_of": "tablaRetenciones",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": ""
+      }
+    },
+    {
+      "id": "fec9c391-9886-11ef-b698-3192d75aacbc",
+      "label": "documentoVinculado",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": [],
+      "type": "text",
+      "type_options": {
+        "min": null,
+        "max": null,
+        "pattern": ""
+      },
+      "child_of": "tablaRetenciones",
+      "order": null,
+      "display_name": null,
+      "import_xls_column": null,
+      "hidden": true,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": ""
+      }
+    }
+  ]
+}

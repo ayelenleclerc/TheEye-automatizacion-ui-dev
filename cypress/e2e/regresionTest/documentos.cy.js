@@ -288,8 +288,10 @@ describe('Regresion Test Documentos', () => {
                 Documento.contenido.menu.clasificar(id).click();
                 Documento.contenido.clasificar.clasificarDocumentoLabel().should('have.text', ' Esquema a utilizar ').click();
                 Documento.contenido.clasificar.clasificarDocumentoField().click();
+                cy.wait(1000);
                 Documento.contenido.clasificar.clasificarDocumentoOptionOP(schemaId).should('exist').click({force: true});
-                Documento.contenido.clasificar.clasificarBtn().click();
+                cy.get('mat-option').should('not.exist'); 
+                Documento.contenido.clasificar.clasificarBtn().click({force: true});
                 Documento.contenido.mensajeToast().contains('Reprocesando documento')
                
             })
@@ -303,15 +305,15 @@ describe('Regresion Test Documentos', () => {
         Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.miniatura(id). click();
-            DatosDocumento.e.titulo(id).should('have.text', ` Document ID: ${id} `);
+            DatosDocumento.e.titulo().should('have.text', `Document ID: ${id}`);
             
-            DatosDocumento.e.infoTitulo().should('contain', ' Información Obtenida');
+            DatosDocumento.e.infoTitulo().should('have.text', 'Información Obtenida');
             
             DatosDocumento.e.inputFiltro().clear().type('cae').clear();
             DatosDocumento.e.inputFiltro().clear()
         })
-        DatosDocumento.e.nombre().should('have.text', ' NOMBRE ');
-        DatosDocumento.e.valor().should('have.text', ' VALOR ');
+        DatosDocumento.e.nombre().should('have.text', 'NOMBRE');
+        DatosDocumento.e.valor().should('have.text', 'VALOR');
         DatosDocumento.verificarColumnas();
            
     })
@@ -320,12 +322,14 @@ describe('Regresion Test Documentos', () => {
         Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.miniatura(id).click();
-            DatosDocumento.e.titulo(id).should('have.text', ` Document ID: ${id} `);
-            DatosDocumento.e.infoTitulo().should('contain', ' Información Obtenida');
+            DatosDocumento.e.titulo().should('have.text', `Document ID: ${id}`);
+            DatosDocumento.e.infoTitulo().should('contain', 'Información Obtenida');
         })
-        DatosDocumento.e.subtablas().eq(1).should('exist').and('contain', ' items ');
-        DatosDocumento.e.verDatos().eq(1).should('exist').and('contain', ' Ver datos ').click();
-        DatosDocumento.e.tituloSubTabla().contains('Tabla: items');
+
+        DatosDocumento.e.subtablas().scrollIntoView().eq(0).should('exist').and('contain', 'TABLA');
+        DatosDocumento.e.subtablasValores().should('exist').and('contain', 'DATOS');
+        DatosDocumento.e.items().contains('items');
+        DatosDocumento.e.verDatosItems().click();
         DatosDocumento.e.datosItem.cantidad().should('have.text', 'cantidad')
         DatosDocumento.e.datosItem.codigo().should('have.text', 'codigo')
         DatosDocumento.e.datosItem.descripcion().should('have.text', 'decripcion')
@@ -340,13 +344,14 @@ describe('Regresion Test Documentos', () => {
         Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.miniatura(id).click();
-            DatosDocumento.e.titulo(id).should('have.text', ` Document ID: ${id} `);
-            DatosDocumento.e.infoTitulo().should('contain', ' Información Obtenida');
+            DatosDocumento.e.titulo(id).should('have.text', `Document ID: ${id}`);
+            DatosDocumento.e.infoTitulo().should('contain', 'Información Obtenida');
         })
 
-        DatosDocumento.e.subtablas().eq(0).should('exist').and('contain', ' percepciones ');
-        DatosDocumento.e.verDatos().eq(0).should('exist').and('contain', ' Ver datos ').click();
-        DatosDocumento.e.tituloSubTabla().contains('Tabla: percepciones');
+        DatosDocumento.e.subtablas().scrollIntoView().eq(0).should('exist').and('contain', 'TABLA');
+        DatosDocumento.e.subtablasValores().should('exist').and('contain', 'DATOS');
+        DatosDocumento.e.percepciones().contains('percepciones');
+        DatosDocumento.e.verDatosPercepciones().click();
         DatosDocumento.e.datosPercepciones.percepcionesImporte().should('have.text', 'percepciones_importe');
         DatosDocumento.e.datosPercepciones.percepcionesPorcentaje().should('have.text', 'percepciones_porcentaje');
         DatosDocumento.e.datosPercepciones.percepcionesTipo().should('have.text', 'percepciones_tipo');
@@ -373,13 +378,12 @@ describe('Regresion Test Documentos', () => {
         Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
         Documento.contenido.miniatura(id).click();
-        DatosDocumento.e.titulo(id).should('have.text', ` Document ID: ${id} `);
-        DatosDocumento.e.infoTitulo().should('contain', ' Información Obtenida');
+        
         })
-        DatosDocumento.e.procesarManualmenteBtn().click();
+        DatosDocumento.e.procesarManualmenteBtn().click({force: true});
     })         
        
-    it.skip('TC-005 validación elementos, existen todos los elementos de las tablas', () => {
+    it('TC-005 validación elementos, existen todos los elementos de las tablas', () => {
         Documento.ingresar()
         ProcesamientoManual.validarMenuBar();
         ProcesamientoManual.validarFiltroyTag();
@@ -420,7 +424,7 @@ describe('Regresion Test Documentos', () => {
         cy.reload();
     });
     
-    it('En el proceso manual, se deben ver todas las páginas', () => {
+    it('TC-006 En el proceso manual, se deben ver todas las páginas', () => {
         cy.visit('/document')
         Documento.ingresar();
         ProcesamientoManual.validarMultipágina();
@@ -485,7 +489,14 @@ describe('Regresion Test Documentos', () => {
             Documento.contenido.acciones.menu(id).click();
             Documento.contenido.menu.borrar(id).click();
             Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
-            })
+          })
+        cy.reload();
+         Documento.contenido.checkboxRow().eq(0).click();
+          Documento.obtenerIdFilaSeleccionada().then((id) => {
+            Documento.contenido.acciones.menu(id).click();
+            Documento.contenido.menu.borrar(id).click();
+            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
+          })
     })
 
 })

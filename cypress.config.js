@@ -7,7 +7,7 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     viewportHeight: 1080,
     baseUrl: 'https://tagger-ui-dev.theeye.io/',
-    experimentalStudio: true,
+    experimentalStudio: false,
     
     video: true,
     screenshotOnRunFailure: false,

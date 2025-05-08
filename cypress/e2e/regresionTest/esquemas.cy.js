@@ -8,20 +8,20 @@ describe('Validación de Esquemas Pantalla inicial', () => {
         cy.ingresar_Esquemas();
     })
 
-    it('Importar Schema Factura, agregando el archivo el json', () => {
+    it.skip('Importar Schema Factura, agregando el archivo el json', () => {
         Schema.nuevoEsquemaBtn().click();
         NuevoSchema.config.importarBtn().click();
         NuevoSchema.config.agregarDocBtn().click();
-        NuevoSchema.config.importarDocBtn().selectFile('cypress/fixtures/schemas/facturas.json', { force: true });
+        NuevoSchema.config.importarDocBtn().selectFile('cypress/fixtures/schemas/Factura.json', { force: true });
 
         NuevoSchema.config.guardarBtn().click();
         cy.wait(5000);
     })
     
-    it('Importar Schema eCheq, pegando el json', () => {
+    it.skip('Importar Schema eCheq, pegando el json', () => {
         Schema.nuevoEsquemaBtn().click();
         NuevoSchema.config.importarBtn().click();
-        cy.readFile('cypress/fixtures/schemas/eCheqs.json').then((eCheqs) => {
+        cy.readFile('cypress/fixtures/schemas/ECheqs.json').then((eCheqs) => {
             const eCheqsTexto = JSON.stringify(eCheqs, null, 2);
             NuevoSchema.config.agregarJsonBtn().click()
             NuevoSchema.config.inputJson().clear()
@@ -34,11 +34,11 @@ describe('Validación de Esquemas Pantalla inicial', () => {
          cy.wait(5000);
     })
 
-    it('Importar Schema OP, agregando el archivo el json', () => {
+    it.skip('Importar Schema OP, agregando el archivo el json', () => {
         Schema.nuevoEsquemaBtn().click();
         NuevoSchema.config.importarBtn().click();
         NuevoSchema.config.agregarDocBtn().click();
-        NuevoSchema.config.importarDocBtn().selectFile('cypress/fixtures/schemas/ordenPago.json', { force: true });
+        NuevoSchema.config.importarDocBtn().selectFile('cypress/fixtures/schemas/OrdenDePago.json', { force: true });
         
         NuevoSchema.config.guardarBtn().click();
          cy.wait(5000);

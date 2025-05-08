@@ -1,130 +1,171 @@
 {
   "name": "ECheqs",
-  "enabled": true,
-  "processor_id": "",
-  "processor_enabled": false,
-  "processor_cache_enabled": false,
-  "creation_date": "2025-02-03T18:22:29.389Z",
-  "modification_date": "2025-02-03T18:22:29.389Z",
   "default": false,
   "import_xls_skip_rows": 2,
   "classification_label": null,
   "classification_description": null,
-  "generation_model": null,
-  "generation_config": {},
-  "generation_system_instructions": null,
-  "generative_extractor_enabled": false,
-  "generation_autogenerate_system_instructions_schema": true,
-  "validator": null,
-  "id": "67a10965afbd964ec85ed30f",
   "properties": [
     {
-      "id": "434a6640-751f-11ef-92bd-89dbdb07b87a",
-      "label": "conciliacion",
+      "id": "f36548b0-2aaf-11f0-b608-3719b5a162e2",
+      "label": "0",
       "multiple": false,
       "required": false,
       "default_value": null,
       "alias": null,
       "filters": null,
       "type": "text",
-      "type_options": {},
-      "order": null,
-      "display_name": null,
-      "import_xls_column": null,
-      "hidden": true,
-      "is_key": false,
-      "datasource": {
-        "url": "",
-        "key": "",
-        "value": "",
-        "type": ""
-      }
-    },
-    {
-      "id": "55be5a10-7462-11ef-afdc-d7946ca63d76",
-      "label": "cuentaDestino",
-      "multiple": false,
-      "required": true,
-      "default_value": null,
-      "alias": null,
-      "filters": null,
-      "type": "text",
-      "type_options": {},
-      "order": null,
-      "display_name": null,
+      "type_options": {
+        "min": 0,
+        "max": 0,
+        "pattern": ""
+      },
+      "child_of": "",
+      "order": 0,
+      "display_name": "",
       "import_xls_column": "D",
       "hidden": false,
-      "is_key": false
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
     },
     {
-      "id": "434a6641-751f-11ef-92bd-89dbdb07b87a",
-      "label": "documentoVinculado",
+      "id": "f36548b1-2aaf-11f0-b608-3719b5a162e2",
+      "label": "1",
       "multiple": false,
       "required": false,
       "default_value": null,
       "alias": null,
       "filters": null,
       "type": "text",
-      "type_options": {},
-      "order": null,
-      "display_name": null,
-      "import_xls_column": null,
-      "hidden": true,
+      "type_options": {
+        "min": 0,
+        "max": 0,
+        "pattern": ""
+      },
+      "child_of": "",
+      "order": 1,
+      "display_name": "",
+      "import_xls_column": "C",
+      "hidden": false,
       "is_key": false,
       "datasource": {
         "url": "",
         "key": "",
         "value": "",
-        "type": ""
+        "type": "text"
       }
     },
     {
-      "id": "6faae782-6b03-11ef-9c03-c352f340826b",
-      "label": "fechaPago",
+      "id": "f36548b2-2aaf-11f0-b608-3719b5a162e2",
+      "label": "2",
       "multiple": false,
-      "required": true,
+      "required": false,
       "default_value": null,
       "alias": null,
       "filters": null,
-      "type": "date",
-      "type_options": {},
-      "order": null,
-      "display_name": null,
-      "import_xls_column": "C",
+      "type": "text",
+      "type_options": {
+        "min": 0,
+        "max": 0,
+        "pattern": ""
+      },
+      "child_of": "",
+      "order": 2,
+      "display_name": "",
+      "import_xls_column": "B",
       "hidden": false,
-      "is_key": false
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
     },
     {
-      "id": "6faae781-6b03-11ef-9c03-c352f340826b",
-      "label": "monto",
+      "id": "f36548b3-2aaf-11f0-b608-3719b5a162e2",
+      "label": "3",
       "multiple": false,
-      "required": true,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": null,
+      "type": "text",
+      "type_options": {
+        "min": 0,
+        "max": 0,
+        "pattern": ""
+      },
+      "child_of": "",
+      "order": 3,
+      "display_name": "",
+      "import_xls_column": "A",
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "f36548b4-2aaf-11f0-b608-3719b5a162e2",
+      "label": "4",
+      "multiple": false,
+      "required": false,
+      "default_value": null,
+      "alias": null,
+      "filters": null,
+      "type": "text",
+      "type_options": {
+        "min": 0,
+        "max": 0,
+        "pattern": ""
+      },
+      "child_of": "",
+      "order": 4,
+      "display_name": "",
+      "import_xls_column": "2",
+      "hidden": false,
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
+    },
+    {
+      "id": "f36548b5-2aaf-11f0-b608-3719b5a162e2",
+      "label": "5",
+      "multiple": false,
+      "required": false,
       "default_value": null,
       "alias": null,
       "filters": null,
       "type": "money",
-      "type_options": {},
-      "order": null,
-      "display_name": null,
-      "import_xls_column": "B",
+      "type_options": {
+        "min": 0,
+        "max": 0,
+        "pattern": ""
+      },
+      "child_of": "",
+      "order": 5,
+      "display_name": "",
+      "import_xls_column": "2",
       "hidden": false,
-      "is_key": false
-    },
-    {
-      "id": "3e10bfb0-7206-11ef-a77d-3fcb29d787d5",
-      "label": "nroCheque",
-      "multiple": false,
-      "required": true,
-      "default_value": null,
-      "alias": null,
-      "filters": null,
-      "type": "number",
-      "type_options": {},
-      "order": null,
-      "display_name": "Numero de Cheque",
-      "import_xls_column": "A",
-      "hidden": false,
-      "is_key": false
+      "is_key": false,
+      "datasource": {
+        "url": "",
+        "key": "",
+        "value": "",
+        "type": "text"
+      }
     }
   ]
 }

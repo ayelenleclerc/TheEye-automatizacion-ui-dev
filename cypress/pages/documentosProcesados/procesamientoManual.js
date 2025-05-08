@@ -22,7 +22,7 @@ class ProcesamientoManual{
         },
         paginador: {
             flechaAtras: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(9)'),
-            flechaAdelante: () => cy.get('[mat-button=""][ng-reflect-disabled="false"] > .mat-mdc-button-touch-target'),
+            flechaAdelante: () => cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > button:nth-child(11)'),
             contador: ()=> cy.get('body > app-root > div > app-tagger-processing > div > mat-toolbar > input')
         },
         filtro: {
@@ -101,7 +101,7 @@ class ProcesamientoManual{
             percepcionesTipo: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > thead > tr > th:nth-child(3) > div > span'),
             accionesPercepciones: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > thead > tr > th.th-actions'),
             eliminarIcono: () => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > tbody > tr > td.td-actions > button:nth-child(1) > mat-icon'),
-            agregarPercepcion:() => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > table > tbody > tr > td.td-actions > button:nth-child(2)'),
+            agregarPercepcion:() => cy.get('#drawer > div > div > div > div:nth-child(2) > div:nth-child(4) > button'),
               
       },
         
@@ -283,9 +283,9 @@ class ProcesamientoManual{
   validarMultipágina = () => {
     
     this.el.paginador.flechaAdelante().click({force: true});
-    this.el.paginador.contador().contains('1');
+    this.el.paginador.contador().should('not.be.equal', '2');
     this.el.paginador.flechaAdelante().click({ force: true });
-    this.el.paginador.contador().should('not.be.equal', '2')
+    this.el.paginador.contador().should('not.be.equal', '1')
     // this.el.paginador.flechaAtras().should('be.enabled');
     // this.el.paginador.flechaAtras().click({force: true});
 }

@@ -1,22 +1,25 @@
 class DatosDocumento{
 
     e = {
-        titulo: (id) => cy.get('[data-test="document-detail-title"]'),
-        infoTitulo: ()=> cy.get('[data-test="document-detail-info-obtained-title"]'),
-        inputFiltro: () => cy.get('[data-test="document-detail-filter-field"]'),
+        titulo: () => cy.get('.dialog-title'),
+        infoTitulo: ()=> cy.get('.section-title'),
+        inputFiltro: () => cy.get('#mat-input-1'),
             
         //TABLA de los datos del documento
-        nombre: () => cy.get('[data-test="document-detail-doc-tags-header-key"]'),
-        valor: () => cy.get('[data-test="document-detail-doc-tags-header-value"]'),
-        cellKey: () => cy.get('[data-test="document-detail-doc-tags-cell-key"]'),
-        cellValue: () => cy.get('[data-test="document-detail-doc-tags-cell-value"] > span'), 
+        nombre: () => cy.get('#mat-tab-content-0-0 > div > div > div > div:nth-child(1) > table > thead > tr > th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-key.mat-column-key.ng-star-inserted.mat-mdc-table-sticky.mat-mdc-table-sticky-border-elem-top'),
+        valor: () => cy.get('#mat-tab-content-0-0 > div > div > div > div:nth-child(1) > table > thead > tr > th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-value.mat-column-value.ng-star-inserted.mat-mdc-table-sticky.mat-mdc-table-sticky-border-elem-top'),
+        cellKey: () => cy.get('.cdk-column-key'),
+        cellValue: () => cy.get('.cdk-column-value'), 
 
         //TABLA de los items
         tabla: () => cy.get('[data-test="document-detail-tables-header-key"]'),
         datos: () => cy.get('[data-test="document-detail-tables-header-value"]'),
-        subtablas: () => cy.get('[data-test="document-detail-tables-cell-key"]'),
-        verDatos: () => cy.get('[data-test="document-detail-tables-show-data-button"]'),
-        tituloSubTabla: () => cy.get('[mat-dialog-title]'),
+        subtablas: () => cy.get('#mat-tab-content-0-0 > div > div > div > div:nth-child(2) > table > thead > tr > th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-key.mat-column-key.ng-star-inserted.mat-mdc-table-sticky.mat-mdc-table-sticky-border-elem-top'),
+        subtablasValores: () => cy.get('#mat-tab-content-0-0 > div > div > div > div:nth-child(2) > table > thead > tr > th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-value.mat-column-value.ng-star-inserted.mat-mdc-table-sticky.mat-mdc-table-sticky-border-elem-top'),
+        items: () => cy.get('#mat-tab-content-0-0 > div > div > div > div:nth-child(2) > table > tbody > tr:nth-child(1) > td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-key.mat-column-key.ng-star-inserted'),
+         percepciones: () => cy.get('#mat-tab-content-0-0 > div > div > div > div:nth-child(2) > table > tbody > tr:nth-child(2) > td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-key.mat-column-key.ng-star-inserted'),
+        verDatosItems: () => cy.get('#mat-tab-content-0-0 > div > div > div > div:nth-child(2) > table > tbody > tr:nth-child(1) > td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-value.mat-column-value.ng-star-inserted > button > span.mdc-button__label'),
+        verDatosPercepciones: () => cy.get('#mat-tab-content-0-0 > div > div > div > div:nth-child(2) > table > tbody > tr:nth-child(2) > td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-value.mat-column-value.ng-star-inserted > button > span.mdc-button__label'),
         cerrarVentanaSubTabla: () => cy.get('#actions > mat-dialog-actions > button > span.mdc-button__label'),
         datosItem: {
         
@@ -34,7 +37,7 @@ class DatosDocumento{
             percepcionesPorcentaje: () => cy.get('.cdk-column-percepciones_porcentaje'),
             percepcionesTipo: ()=> cy.get('.cdk-column-percepciones_tipo')
         },
-        procesarManualmenteBtn: () => cy.get('[data-test="document-detail-process-manually-button"]'),
+        procesarManualmenteBtn: () => cy.get('.dialog-footer > .ng-star-inserted > .mat-mdc-button-touch-target'),
         cerrarVentana: ()=> cy.get('data-test="document-detail-close-button"]'),
         
       // importeOtrosTributos TABLA
