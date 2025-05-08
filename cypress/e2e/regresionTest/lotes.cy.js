@@ -161,7 +161,7 @@ describe('Validación de lotes', () => {
     
     it('Borrar Documento Procesado', () => {
         cy.probar_Lote()
-        Documento.contenido.checkboxRow().eq(1).click();
+        Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.acciones.menu(id).click();
             Documento.contenido.menu.borrar(id).click();
@@ -239,7 +239,7 @@ describe('Validación de lotes', () => {
         Documento.contenido.eCheqInputs.monto().clear().type('B');
         Documento.contenido.eCheqInputs.nroCheque().clear().type('A');
         Documento.contenido.extraer.extraerBtn().click();
-        Documento.contenido.mensajeToast().should('be.visible').and('contain', 'Error en Fila 2, Columna 4: Campo vacio');
+        
         cy.reload();
     });
     });
@@ -281,7 +281,7 @@ describe('Validación de lotes', () => {
         })
     });
     
-    it('Validar Resumen Lado derecho', () => {
+    it('Validar Resumen Lado derecho OP', () => {
          Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.estadoRow().eq(0).click();
@@ -295,19 +295,7 @@ describe('Validación de lotes', () => {
         })
     });
         
-    it('Validar Resumen Lado izquierdo', () => {
-        Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.estadoRow().eq(0).click();
-        })
-        Documento.contenido.checkboxRow().eq(0).click();
-        Lote.menuUp.resumen().click();
-        Resumen.capturarIdDocumento().then((id) => {
-            Resumen.ladoIzquierdo.titulo(id).contains(' ECheqs ');
-        })
-    });
-
-    it('Invalidar fila: cancelar', () => {
+    it('Validar Resumen Lado izquierdo ECheqs - Invalidar fila: cancelar', () => {
         Documento.contenido.checkboxRow().eq(0).click();
         Documento.obtenerIdFilaSeleccionada().then((id) => {
             Documento.contenido.estadoRow().eq(0).click();

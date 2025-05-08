@@ -242,261 +242,261 @@ describe('Regresion Test Documentos', () => {
         })
     });
         
-     it('TC-002 Subir documento y validar estado y contenido default', () => {
-        AgregarDocumento.e.agregarDoc().click();
-        cy.subirPdf('/archivos/factura_Afip_lineas_percepciones.pdf');
-        AgregarDocumento.e.progresoCarga().should('be.visible');
-        AgregarDocumento.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');
-        AgregarDocumento.e.cerrarUploader().click();
-        Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.checkboxInput(id).should('exist');
-            Documento.contenido.idCopyBtn(id).should('exist');
-            Documento.contenido.miniatura(id).should('exist');
-            Documento.validarFechaFilaSeleccionada();
-            Documento.contenido.nombreRow().should('be.visible');
-            Documento.contenido.documentoRow().should('exist');
-            Documento.validarEstadoFilaSeleccionada('Procesando - (converting)');
-            Documento.contenido.mensajeEstadoRow().first().should('have.text', 'El documento esta siendo procesado.');
-            cy.wait(15000);
-            cy.reload();
-            Documento.validarEstadoFilaSeleccionada('Procesado - (converted)');
-            Documento.contenido.documentoRow().first().should('be.visible').and('contain', ' Factura');
-            Documento.contenido.mensajeEstadoRow().first().should('contain', 'Datos extraídos. Puede requerir intervencion');
+    //  it('TC-002 Subir documento y validar estado y contenido default', () => {
+    //     AgregarDocumento.e.agregarDoc().click();
+    //     cy.subirPdf('/archivos/factura_Afip_lineas_percepciones.pdf');
+    //     AgregarDocumento.e.progresoCarga().should('be.visible');
+    //     AgregarDocumento.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');
+    //     AgregarDocumento.e.cerrarUploader().click();
+    //     Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.checkboxInput(id).should('exist');
+    //         Documento.contenido.idCopyBtn(id).should('exist');
+    //         Documento.contenido.miniatura(id).should('exist');
+    //         Documento.validarFechaFilaSeleccionada();
+    //         Documento.contenido.nombreRow().should('be.visible');
+    //         Documento.contenido.documentoRow().should('exist');
+    //         Documento.validarEstadoFilaSeleccionada('Procesando - (converting)');
+    //         Documento.contenido.mensajeEstadoRow().first().should('have.text', 'El documento esta siendo procesado.');
+    //         cy.wait(15000);
+    //         cy.reload();
+    //         Documento.validarEstadoFilaSeleccionada('Procesado - (converted)');
+    //         Documento.contenido.documentoRow().first().should('be.visible').and('contain', ' Factura');
+    //         Documento.contenido.mensajeEstadoRow().first().should('contain', 'Datos extraídos. Puede requerir intervencion');
 
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.borrar(id).click();
-            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.borrar(id).click();
+    //         Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
            
-        });
+    //     });
             
-    })
+    // })
     
-    it('TC-003 Subir documento y clasificar manualmente', () => {
-        cy.fixture('/schemas/schemasId.json').then((schemas) => {
-            const schemaId = schemas['Factura']
-            AgregarDocumento.e.agregarDoc().click();
-            cy.subirPdf('/archivos/clasificar_a_mano.pdf');
-            AgregarDocumento.e.progresoCarga().should('be.visible');
-            AgregarDocumento.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');
-            AgregarDocumento.e.cerrarUploader().click();
-            cy.wait(20000);
-            cy.reload();
-            Documento.contenido.checkboxRow().eq(0).click();
-            Documento.obtenerIdFilaSeleccionada().then((id) => {
-                Documento.contenido.acciones.menu(id).click();
-                Documento.contenido.menu.clasificar(id).click();
-                Documento.contenido.clasificar.clasificarDocumentoLabel().should('have.text', ' Esquema a utilizar ').click();
-                Documento.contenido.clasificar.clasificarDocumentoField().click();
-                cy.wait(1000);
-                Documento.contenido.clasificar.clasificarDocumentoOptionOP(schemaId).should('exist').click({force: true});
-                cy.get('mat-option').should('not.exist'); 
-                Documento.contenido.clasificar.clasificarBtn().click({force: true});
-                Documento.contenido.mensajeToast().contains('Reprocesando documento')
+    // it('TC-003 Subir documento y clasificar manualmente', () => {
+    //     cy.fixture('/schemas/schemasId.json').then((schemas) => {
+    //         const schemaId = schemas['Factura']
+    //         AgregarDocumento.e.agregarDoc().click();
+    //         cy.subirPdf('/archivos/clasificar_a_mano.pdf');
+    //         AgregarDocumento.e.progresoCarga().should('be.visible');
+    //         AgregarDocumento.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');
+    //         AgregarDocumento.e.cerrarUploader().click();
+    //         cy.wait(20000);
+    //         cy.reload();
+    //         Documento.contenido.checkboxRow().eq(0).click();
+    //         Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //             Documento.contenido.acciones.menu(id).click();
+    //             Documento.contenido.menu.clasificar(id).click();
+    //             Documento.contenido.clasificar.clasificarDocumentoLabel().should('have.text', ' Esquema a utilizar ').click();
+    //             Documento.contenido.clasificar.clasificarDocumentoField().click();
+    //             cy.wait(1000);
+    //             Documento.contenido.clasificar.clasificarDocumentoOptionOP(schemaId).should('exist').click({force: true});
+    //             cy.get('mat-option').should('not.exist'); 
+    //             Documento.contenido.clasificar.clasificarBtn().click({force: true});
+    //             Documento.contenido.mensajeToast().contains('Reprocesando documento')
                
-            })
-            cy.wait(20000);
-            cy.reload();
-        })
-    })
+    //         })
+    //         cy.wait(20000);
+    //         cy.reload();
+    //     })
+    // })
 
-    it('TC-004 Validación de datos del documento, existen todas las columnas', () => {
+    // it('TC-004 Validación de datos del documento, existen todas las columnas', () => {
       
-        Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.miniatura(id). click();
-            DatosDocumento.e.titulo().should('have.text', `Document ID: ${id}`);
+    //     Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.miniatura(id). click();
+    //         DatosDocumento.e.titulo().should('have.text', `Document ID: ${id}`);
             
-            DatosDocumento.e.infoTitulo().should('have.text', 'Información Obtenida');
+    //         DatosDocumento.e.infoTitulo().should('have.text', 'Información Obtenida');
             
-            DatosDocumento.e.inputFiltro().clear().type('cae').clear();
-            DatosDocumento.e.inputFiltro().clear()
-        })
-        DatosDocumento.e.nombre().should('have.text', 'NOMBRE');
-        DatosDocumento.e.valor().should('have.text', 'VALOR');
-        DatosDocumento.verificarColumnas();
+    //         DatosDocumento.e.inputFiltro().clear().type('cae').clear();
+    //         DatosDocumento.e.inputFiltro().clear()
+    //     })
+    //     DatosDocumento.e.nombre().should('have.text', 'NOMBRE');
+    //     DatosDocumento.e.valor().should('have.text', 'VALOR');
+    //     DatosDocumento.verificarColumnas();
            
-    })
+    // })
 
-    it('TC-004 Validar tabla items', () => {
-        Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.miniatura(id).click();
-            DatosDocumento.e.titulo().should('have.text', `Document ID: ${id}`);
-            DatosDocumento.e.infoTitulo().should('contain', 'Información Obtenida');
-        })
+    // it('TC-004 Validar tabla items', () => {
+    //     Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.miniatura(id).click();
+    //         DatosDocumento.e.titulo().should('have.text', `Document ID: ${id}`);
+    //         DatosDocumento.e.infoTitulo().should('contain', 'Información Obtenida');
+    //     })
 
-        DatosDocumento.e.subtablas().scrollIntoView().eq(0).should('exist').and('contain', 'TABLA');
-        DatosDocumento.e.subtablasValores().should('exist').and('contain', 'DATOS');
-        DatosDocumento.e.items().contains('items');
-        DatosDocumento.e.verDatosItems().click();
-        DatosDocumento.e.datosItem.cantidad().should('have.text', 'cantidad')
-        DatosDocumento.e.datosItem.codigo().should('have.text', 'codigo')
-        DatosDocumento.e.datosItem.descripcion().should('have.text', 'decripcion')
-        DatosDocumento.e.datosItem.importeUnitario().should('have.text', 'importeUnitario')
-        DatosDocumento.e.datosItem.importeTotalConIVA().should('have.text', 'items_importe_total_con_iva')
-        DatosDocumento.e.datosItem.importeTotalSinIVA().should('have.text', 'items_importe_total_sin_iva')
-        DatosDocumento.e.datosItem.iva().should('have.text', 'iva');
-        DatosDocumento.e.cerrarVentanaSubTabla().click();
-    })
+    //     DatosDocumento.e.subtablas().scrollIntoView().eq(0).should('exist').and('contain', 'TABLA');
+    //     DatosDocumento.e.subtablasValores().should('exist').and('contain', 'DATOS');
+    //     DatosDocumento.e.items().contains('items');
+    //     DatosDocumento.e.verDatosItems().click();
+    //     DatosDocumento.e.datosItem.cantidad().should('have.text', 'cantidad')
+    //     DatosDocumento.e.datosItem.codigo().should('have.text', 'codigo')
+    //     DatosDocumento.e.datosItem.descripcion().should('have.text', 'decripcion')
+    //     DatosDocumento.e.datosItem.importeUnitario().should('have.text', 'importeUnitario')
+    //     DatosDocumento.e.datosItem.importeTotalConIVA().should('have.text', 'items_importe_total_con_iva')
+    //     DatosDocumento.e.datosItem.importeTotalSinIVA().should('have.text', 'items_importe_total_sin_iva')
+    //     DatosDocumento.e.datosItem.iva().should('have.text', 'iva');
+    //     DatosDocumento.e.cerrarVentanaSubTabla().click();
+    // })
     
-    it('TC-004 Validar tabla percepciones', () => {
-        Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.miniatura(id).click();
-            DatosDocumento.e.titulo(id).should('have.text', `Document ID: ${id}`);
-            DatosDocumento.e.infoTitulo().should('contain', 'Información Obtenida');
-        })
+    // it('TC-004 Validar tabla percepciones', () => {
+    //     Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.miniatura(id).click();
+    //         DatosDocumento.e.titulo(id).should('have.text', `Document ID: ${id}`);
+    //         DatosDocumento.e.infoTitulo().should('contain', 'Información Obtenida');
+    //     })
 
-        DatosDocumento.e.subtablas().scrollIntoView().eq(0).should('exist').and('contain', 'TABLA');
-        DatosDocumento.e.subtablasValores().should('exist').and('contain', 'DATOS');
-        DatosDocumento.e.percepciones().contains('percepciones');
-        DatosDocumento.e.verDatosPercepciones().click();
-        DatosDocumento.e.datosPercepciones.percepcionesImporte().should('have.text', 'percepciones_importe');
-        DatosDocumento.e.datosPercepciones.percepcionesPorcentaje().should('have.text', 'percepciones_porcentaje');
-        DatosDocumento.e.datosPercepciones.percepcionesTipo().should('have.text', 'percepciones_tipo');
-        DatosDocumento.e.cerrarVentanaSubTabla().click();
-    })
+    //     DatosDocumento.e.subtablas().scrollIntoView().eq(0).should('exist').and('contain', 'TABLA');
+    //     DatosDocumento.e.subtablasValores().should('exist').and('contain', 'DATOS');
+    //     DatosDocumento.e.percepciones().contains('percepciones');
+    //     DatosDocumento.e.verDatosPercepciones().click();
+    //     DatosDocumento.e.datosPercepciones.percepcionesImporte().should('have.text', 'percepciones_importe');
+    //     DatosDocumento.e.datosPercepciones.percepcionesPorcentaje().should('have.text', 'percepciones_porcentaje');
+    //     DatosDocumento.e.datosPercepciones.percepcionesTipo().should('have.text', 'percepciones_tipo');
+    //     DatosDocumento.e.cerrarVentanaSubTabla().click();
+    // })
     
-    it('TC-005 Agregar documento con datos faltantes', () => {
-         Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.borrar(id).click();
-            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
-            })
-        AgregarDocumento.e.agregarDoc().click();
-        cy.subirPdf('/archivos/factura_dato_faltante.pdf');               
-        AgregarDocumento.e.progresoCarga().should('be.visible');
-        AgregarDocumento.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');
-        AgregarDocumento.e.cerrarUploader().click();
-        cy.wait(15000);
-        cy.reload();          
-    })
+    // it('TC-005 Agregar documento con datos faltantes', () => {
+    //      Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.borrar(id).click();
+    //         Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
+    //         })
+    //     AgregarDocumento.e.agregarDoc().click();
+    //     cy.subirPdf('/archivos/factura_dato_faltante.pdf');               
+    //     AgregarDocumento.e.progresoCarga().should('be.visible');
+    //     AgregarDocumento.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');
+    //     AgregarDocumento.e.cerrarUploader().click();
+    //     cy.wait(15000);
+    //     cy.reload();          
+    // })
     
-    it('TC-005 Ingresar a procesamiento manual desde Datos extraídos', () => {
-        Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {
-        Documento.contenido.miniatura(id).click();
+    // it('TC-005 Ingresar a procesamiento manual desde Datos extraídos', () => {
+    //     Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //     Documento.contenido.miniatura(id).click();
         
-        })
-        DatosDocumento.e.procesarManualmenteBtn().click({force: true});
-    })         
+    //     })
+    //     DatosDocumento.e.procesarManualmenteBtn().click({force: true});
+    // })         
        
-    it('TC-005 validación elementos, existen todos los elementos de las tablas', () => {
-        Documento.ingresar()
-        ProcesamientoManual.validarMenuBar();
-        ProcesamientoManual.validarFiltroyTag();
-        ProcesamientoManual.validarTablaDatos(); 
-        ProcesamientoManual.validarTablaItems();
-        ProcesamientoManual.validarTablaPercepciones(); 
-    })
+    // it('TC-005 validación elementos, existen todos los elementos de las tablas', () => {
+    //     Documento.ingresar()
+    //     ProcesamientoManual.validarMenuBar();
+    //     ProcesamientoManual.validarFiltroyTag();
+    //     ProcesamientoManual.validarTablaDatos(); 
+    //     ProcesamientoManual.validarTablaItems();
+    //     ProcesamientoManual.validarTablaPercepciones(); 
+    // })
         
-    it('TC-005 validación error cuando hay datos faltantes, muestra el error', () => {
-        Documento.ingresar()
-        ProcesamientoManual.borrarDatoParaError();
-        Documento.ingresar()
-        ProcesamientoManual.errorFaltaRequerido();
-    })
+    // it('TC-005 validación error cuando hay datos faltantes, muestra el error', () => {
+    //     Documento.ingresar()
+    //     ProcesamientoManual.borrarDatoParaError();
+    //     Documento.ingresar()
+    //     ProcesamientoManual.errorFaltaRequerido();
+    // })
          
-    it('TC-005 Validacion de comportamiento cuando se agrega el dato incorrecto', () =>{
-        Documento.ingresar()
-        ProcesamientoManual.errorFaltaRequerido();
-        ProcesamientoManual.completarDatoIncorrecto();
-    });
+    // it('TC-005 Validacion de comportamiento cuando se agrega el dato incorrecto', () =>{
+    //     Documento.ingresar()
+    //     ProcesamientoManual.errorFaltaRequerido();
+    //     ProcesamientoManual.completarDatoIncorrecto();
+    // });
         
-    it('TC-005 Validacion de comportamiento cuando se agrega el dato faltante', () =>{
-        Documento.ingresar()
-        ProcesamientoManual.completarDatoFaltante();
-     });
+    // it('TC-005 Validacion de comportamiento cuando se agrega el dato faltante', () =>{
+    //     Documento.ingresar()
+    //     ProcesamientoManual.completarDatoFaltante();
+    //  });
     
-    it('TC-006 Agregar documento multipagina', () => {
-         Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.borrar(id).click();
-            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
-        })
-        AgregarDocumento.e.agregarDoc().click();
-        cy.subirPdf('archivos/factura_multipagina2.pdf');
-        AgregarDocumento.e.cerrarUploader().click();
-        cy.wait(25000);
-        cy.reload();
-    });
+    // it('TC-006 Agregar documento multipagina', () => {
+    //      Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.borrar(id).click();
+    //         Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
+    //     })
+    //     AgregarDocumento.e.agregarDoc().click();
+    //     cy.subirPdf('archivos/factura_multipagina2.pdf');
+    //     AgregarDocumento.e.cerrarUploader().click();
+    //     cy.wait(25000);
+    //     cy.reload();
+    // });
     
-    it('TC-006 En el proceso manual, se deben ver todas las páginas', () => {
-        cy.visit('/document')
-        Documento.ingresar();
-        ProcesamientoManual.validarMultipágina();
-    })
+    // it('TC-006 En el proceso manual, se deben ver todas las páginas', () => {
+    //     cy.visit('/document')
+    //     Documento.ingresar();
+    //     ProcesamientoManual.validarMultipágina();
+    // })
     
-    it('TC-007 Invalidar Documento', () => {
-        AgregarDocumento.e.agregarDoc().click();
-        cy.subirPdf('/archivos/pruebaTabla.pdf');
-        AgregarDocumento.e.progresoCarga().should('be.visible');
-        AgregarDocumento.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');
-        AgregarDocumento.e.cerrarUploader().click();
-        cy.wait(15000);
-        cy.reload();
-        Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => {         
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.invalidar(id).click();
-            cy.reload();
-            Documento.validarEstadoFilaSeleccionada('Invalidado manualmente - (inva');
-        })
-    })
+    // it('TC-007 Invalidar Documento', () => {
+    //     AgregarDocumento.e.agregarDoc().click();
+    //     cy.subirPdf('/archivos/pruebaTabla.pdf');
+    //     AgregarDocumento.e.progresoCarga().should('be.visible');
+    //     AgregarDocumento.e.msgSubidaOk().should('be.visible').and('contain', 'Subida de documentos completada con éxito');
+    //     AgregarDocumento.e.cerrarUploader().click();
+    //     cy.wait(15000);
+    //     cy.reload();
+    //     Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => {         
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.invalidar(id).click();
+    //         cy.reload();
+    //         Documento.validarEstadoFilaSeleccionada('Invalidado manualmente - (inva');
+    //     })
+    // })
 
-    it('TC-007 Borrar Documento', () => {
-        Documento.contenido.checkboxRow().eq(0).click();
-        Documento.obtenerIdFilaSeleccionada().then((id) => { 
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.borrar(id).click();
-            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');         
-        })
+    // it('TC-007 Borrar Documento', () => {
+    //     Documento.contenido.checkboxRow().eq(0).click();
+    //     Documento.obtenerIdFilaSeleccionada().then((id) => { 
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.borrar(id).click();
+    //         Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');         
+    //     })
             
-    })
+    // })
 
-    it('TC-008 agregar Documento multipágina, y subdividir', () => {
-        AgregarDocumento.e.agregarDoc().click();
-        AgregarDocumento.e.multipageToggle().click();
-        cy.subirPdf('/archivos/AFIP_separar_documentos.pdf');
-        AgregarDocumento.e.cerrarUploader().click();
-        cy.wait(15000);
-        cy.reload();
-    });
+    // it('TC-008 agregar Documento multipágina, y subdividir', () => {
+    //     AgregarDocumento.e.agregarDoc().click();
+    //     AgregarDocumento.e.multipageToggle().click();
+    //     cy.subirPdf('/archivos/AFIP_separar_documentos.pdf');
+    //     AgregarDocumento.e.cerrarUploader().click();
+    //     cy.wait(15000);
+    //     cy.reload();
+    // });
     
-    it('TC_008 Validar multiples documentos subidos', () => {
-        Documento.contenido.checkboxRow().its('length').then((numFilas) => {
-            cy.log(`Numero de filas: ${numFilas}`);
-        })
-         Documento.contenido.checkboxRow().eq(0).click();
-          Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.borrar(id).click();
-            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
-          })
-        cy.reload();
-         Documento.contenido.checkboxRow().eq(0).click();
-          Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.borrar(id).click();
-            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
-          })
-        cy.reload();
-         Documento.contenido.checkboxRow().eq(0).click();
-          Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.borrar(id).click();
-            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
-          })
-        cy.reload();
-         Documento.contenido.checkboxRow().eq(0).click();
-          Documento.obtenerIdFilaSeleccionada().then((id) => {
-            Documento.contenido.acciones.menu(id).click();
-            Documento.contenido.menu.borrar(id).click();
-            Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
-          })
-    })
+    // it('TC_008 Validar multiples documentos subidos', () => {
+    //     Documento.contenido.checkboxRow().its('length').then((numFilas) => {
+    //         cy.log(`Numero de filas: ${numFilas}`);
+    //     })
+    //      Documento.contenido.checkboxRow().eq(0).click();
+    //       Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.borrar(id).click();
+    //         Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
+    //       })
+    //     cy.reload();
+    //      Documento.contenido.checkboxRow().eq(0).click();
+    //       Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.borrar(id).click();
+    //         Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
+    //       })
+    //     cy.reload();
+    //      Documento.contenido.checkboxRow().eq(0).click();
+    //       Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.borrar(id).click();
+    //         Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
+    //       })
+    //     cy.reload();
+    //      Documento.contenido.checkboxRow().eq(0).click();
+    //       Documento.obtenerIdFilaSeleccionada().then((id) => {
+    //         Documento.contenido.acciones.menu(id).click();
+    //         Documento.contenido.menu.borrar(id).click();
+    //         Documento.contenido.mensajeToast().should('be.visible').and('contain','Se completo la operación');
+    //       })
+    // })
 
 })

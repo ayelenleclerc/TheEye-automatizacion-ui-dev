@@ -22,7 +22,7 @@ class Resumen{
     
 
     capturarIdDocumento = () => {
-    return cy.get('#mat-mdc-dialog-0 > div > div > app-batch-summary > div.container > div.right-section > section > div')
+    return cy.get('[data-test="batch-summary-table-document-copy-btn-681cc05b48af6761a2dfe491"]')
         .invoke('attr', 'data-test')
         .then((dataTestValue) => {
         if (!dataTestValue) {
